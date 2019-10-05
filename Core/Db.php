@@ -37,4 +37,14 @@ class Db
             {$valueKey}
         )");
     }
+
+    public function getAttributeValue(string $entityType, string $attributeCode)
+    {
+
+    }
+
+    public function getAttributeValues(string $entityType, string $attributeCode): array
+    {
+
+    }
 }

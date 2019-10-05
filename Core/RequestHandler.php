@@ -7,5 +7,8 @@ namespace Mini\Core;
  */
 class RequestHandler
 {
-
+    public function execute(): Response
+    {
+        return new Response();
+    }
 }

@@ -13,48 +13,46 @@ class Context
     /** @var Context */
     private static $currentContext = null;
 
-    /**
-     * @var Db
-     */
+    /** @var Request */
+    protected $request;
+
+    /** @var Db */
     protected $db;
-    /**
-     * @var Logger
-     */
+
+    /** @var Logger */
     protected $logger;
 
-    public static function setCurrentContext(Context $context)
+    public static function setCurrentContext(Context $context = null)
     {
         self::$currentContext = $context;
-    }
-
-    public static function getCurrentContext(): Context
-    {
-        if (self::$currentContext === null) {
-            self::$currentContext = new Context(new Db(), new Logger());
-        }
-
-        return self::$currentContext;
     }
 
     /**
      * Context constructor.
      */
     public function __construct(
+        Request $request,
         Db $db,
         Logger $logger
     )
     {
         $this->db = $db;
         $this->logger = $logger;
+        $this->request = $request;
     }
 
-    public function getDb()
+    public static function getDb(): Db
     {
-        return $this->db;
+        return self::$currentContext->db;
     }
 
-    public function getLogger(): Logger
+    public static function getLogger(): Logger
     {
-        return $this->logger;
+        return self::$currentContext->logger;
+    }
+
+    public static function getRequest(): Request
+    {
+        return self::$currentContext->request;
     }
 }

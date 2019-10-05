@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . "/../vendor/autoload.php";
-
 spl_autoload_register(function($class) {
 
     if (preg_match('#\\\\?Mini\\\\(.*)#', $class, $matches)) {
@@ -20,3 +18,5 @@ spl_autoload_register(function($class) {
         return;
     }
 });
+
+require_once __DIR__ . "/../vendor/autoload.php";
