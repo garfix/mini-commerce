@@ -1,7 +1,7 @@
 [
     {
         "name": "some-company/some-module",
-        "version": "dev-master",
+        "version": "9999999-dev",
         "version_normalized": "9999999-dev",
         "dist": {
             "type": "path",

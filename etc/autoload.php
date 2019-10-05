@@ -3,7 +3,7 @@
 spl_autoload_register(function($class) {
 
     if (preg_match('#\\\\?Mini\\\\(.*)#', $class, $matches)) {
-        $path = __DIR__ . "/../" . str_replace('\\', '/', $matches[1]) . '.php';
+        $path = __DIR__ . "/../" . str_replace('\\', '/', $class) . '.php';
 
         if (file_exists($path)) {
             require_once $path;
@@ -11,7 +11,7 @@ spl_autoload_register(function($class) {
         }
     }
 
-    $path = __DIR__ . '/../code/' . str_replace('\\', '/', $class) . '.php';
+    $path = __DIR__ . '/../app/' . str_replace('\\', '/', $class) . '.php';
 
     if (file_exists($path)) {
         require_once $path;

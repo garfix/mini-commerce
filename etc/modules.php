@@ -1,6 +1,7 @@
 <?php
 
 return [
-    'SomeCompany/SomeModule' => true,
-    'SomeOtherCompany/SomeOtherModule' => true,
+    'Mini\Core' => true,
+    'SomeCompany\SomeModule' => true,
+    'SomeOtherCompany\SomeOtherModule' => true,
 ];

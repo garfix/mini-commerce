@@ -2,9 +2,6 @@
 
 namespace Mini\Core;
 
-use Mini\Core\Db;
-use Mini\Core\Logger;
-
 /**
  * @author Patrick van Bergen
  */
@@ -12,6 +9,9 @@ class Context
 {
     /** @var Context */
     private static $currentContext = null;
+
+    /** @var array */
+    protected $modules;
 
     /** @var Request */
     protected $request;
@@ -27,10 +27,16 @@ class Context
         self::$currentContext = $context;
     }
 
+    public static function getCurrentContext(): Context
+    {
+        return self::$currentContext;
+    }
+
     /**
      * Context constructor.
      */
     public function __construct(
+        array $modules,
         Request $request,
         Db $db,
         Logger $logger
@@ -39,6 +45,15 @@ class Context
         $this->db = $db;
         $this->logger = $logger;
         $this->request = $request;
+        $this->modules = $modules;
+    }
+
+    /**
+     * @return BasicModule[]
+     */
+    public static function getModules(): array
+    {
+        return self::$currentContext->modules;
     }
 
     public static function getDb(): Db
