@@ -1,0 +1,19 @@
+{
+    "name": "mini/commerce",
+    "description": "Mini Commerce",
+    "authors": [
+        {
+            "name": "Patrick van Bergen",
+            "email": "patrick.vanbergen@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "some-repository/some-company/some-module"
+        }
+    ],
+    "require": {
+        "some-company/some-module": "@dev"
+    }
+}

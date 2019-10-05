@@ -1,0 +1,27 @@
+[
+    {
+        "name": "some-company/some-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "dist": {
+            "type": "path",
+            "url": "some-repository/some-company/some-module",
+            "reference": "35cad7e4dbe37bd9464b9d75067f14658c71a2d1",
+            "shasum": null
+        },
+        "require": {
+            "php": "~7.0"
+        },
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "SomeCompany\\SomeModule\\": ""
+            }
+        },
+        "license": [
+            "MIT"
+        ],
+        "description": "Some module"
+    }
+]
