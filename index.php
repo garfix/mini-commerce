@@ -5,7 +5,7 @@ use Mini\Core\Db;
 use Mini\Core\Logger;
 use Mini\Core\Request;
 use Mini\Core\RequestBuilder;
-use Mini\Core\RouterLocater;
+use Mini\Core\RouteFinder;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -33,9 +33,8 @@ Context::setCurrentContext(new Context(
     new Logger(__DIR__ . "/log")
 ));
 
-$routerLocater = new RouterLocater();
-$router = $routerLocater->selectRouter();
-$requestHandler = $router->getRequestHandler();
+$routeFinder = new RouteFinder();
+$requestHandler = $routeFinder->findRequestHandler();
 $response = $requestHandler->getResponse();
 
 foreach ($response->getHeaders() as $header) {

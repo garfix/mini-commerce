@@ -7,11 +7,17 @@ namespace Mini\Core;
  */
 class Module extends BasicModule
 {
+    public function getFrontName()
+    {
+        return 'core';
+    }
+
     /**
-     * @return RequestHandler|null
+     * @return Router|null
      */
     public function getRouter()
     {
-        return new SimpleRouter();
+        return new ModuleRouter();
     }
+
 }

@@ -7,7 +7,9 @@ namespace Mini\Core;
  */
 abstract class Router
 {
-    public abstract function matches(string $url): bool;
-
-    public abstract function getRequestHandler(): RequestHandler;
+    /**
+     * @param string $url
+     * @return RequestHandler|null
+     */
+    public abstract function findRequestHandler(string $url);
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace SomeCompany\SomeModule;
+namespace Mini\Product;
 
 use Mini\Core\BasicModule;
 
@@ -11,6 +11,6 @@ class Module extends BasicModule
 {
     public function getFrontName()
     {
-        return 'some';
+        return 'product';
     }
 }

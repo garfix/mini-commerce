@@ -9,5 +9,8 @@ use Mini\Core\BasicModule;
  */
 class Module extends BasicModule
 {
-
+    public function getFrontName()
+    {
+        return 'some-other';
+    }
 }
