@@ -19,5 +19,4 @@ class Module extends BasicModule
     {
         return new ModuleRouter();
     }
-
 }

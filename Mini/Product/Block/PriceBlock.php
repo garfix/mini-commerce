@@ -17,6 +17,6 @@ class PriceBlock extends Block
      */
     public function render(array $childBlocks): string
     {
-        return 'product id: ' . ProductPageContext::getProductId();
+        return '[product id: ' . ProductPageContext::getProductId() . ']';
     }
 }

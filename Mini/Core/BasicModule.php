@@ -21,4 +21,12 @@ abstract class BasicModule
     {
         return preg_replace('#Module$#', $relativeClassname, get_class($this));
     }
+
+    /**
+     * @return []string
+     */
+    public function getBlockOverrides(): array
+    {
+        return [];
+    }
 }
