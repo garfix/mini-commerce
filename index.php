@@ -3,6 +3,7 @@
 use Mini\Core\Context;
 use Mini\Core\Db;
 use Mini\Core\Logger;
+use Mini\Core\ModuleUpdater;
 use Mini\Core\Request;
 use Mini\Core\RequestBuilder;
 use Mini\Core\RouteFinder;
@@ -24,7 +25,8 @@ foreach ($moduleNames as $moduleName => $active) {
     }
 }
 
-$_SERVER['REQUEST_URI'] = '/product/product/view';
+//$_SERVER['REQUEST_URI'] = '/product/product/view';
+$_SERVER['REQUEST_URI'] = '/blue-jeans';
 
 Context::setCurrentContext(new Context(
     $modules,
@@ -32,6 +34,10 @@ Context::setCurrentContext(new Context(
     new Db($environment['db']['dbName'], $environment['db']['dbHost'], $environment['db']['username'], $environment['db']['password']),
     new Logger(__DIR__ . "/log")
 ));
+
+$updater = new ModuleUpdater();
+$updater->initialize();
+$updater->update();
 
 $routeFinder = new RouteFinder();
 $requestHandler = $routeFinder->findRequestHandler();

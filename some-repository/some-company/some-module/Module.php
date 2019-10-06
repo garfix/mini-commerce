@@ -16,7 +16,7 @@ class Module extends BasicModule
         return 'some';
     }
 
-    public function getBlockOverrides(): array
+    public function getBlockWrappers(): array
     {
         return [
             PriceBlock::class => SomePriceBlock::class

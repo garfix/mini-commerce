@@ -7,6 +7,11 @@ namespace Mini\Core;
  */
 class Module extends BasicModule
 {
+    public function getVersion()
+    {
+        return 2;
+    }
+
     public function getFrontName()
     {
         return 'core';

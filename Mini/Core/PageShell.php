@@ -28,6 +28,17 @@ class PageShell extends Block
 
     public function render(array $childBlocks): string
     {
-        return 'shell ' . $childBlocks[Header::class] . ' ' . $childBlocks[Menu::class] . ' ' . $childBlocks[$this->mainBlockClass];
+        return <<<HTML
+<html>
+    <head>
+        {$childBlocks[Header::class]} 
+    </head>
+    <body>
+        {$childBlocks[Menu::class]} 
+        {$childBlocks[$this->mainBlockClass]}
+    </body>
+</html>        
+HTML;
+
     }
 }

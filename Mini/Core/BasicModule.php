@@ -7,6 +7,11 @@ namespace Mini\Core;
  */
 abstract class BasicModule
 {
+    public function getVersion()
+    {
+        return null;
+    }
+
     public abstract function getFrontName();
 
     /**
@@ -25,7 +30,7 @@ abstract class BasicModule
     /**
      * @return []string
      */
-    public function getBlockOverrides(): array
+    public function getBlockWrappers(): array
     {
         return [];
     }

@@ -13,4 +13,9 @@ class Module extends BasicModule
     {
         return 'product';
     }
+
+    public function getRouter()
+    {
+        return new UrlRewriteRouter();
+    }
 }

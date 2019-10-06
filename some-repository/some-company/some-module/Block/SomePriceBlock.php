@@ -3,7 +3,6 @@
 namespace SomeCompany\SomeModule\Block;
 
 use Mini\Core\BlockWrapper;
-use Mini\Product\Block\PriceBlock;
 use Mini\Product\ProductPageContext;
 
 /**

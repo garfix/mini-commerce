@@ -33,7 +33,7 @@ class PageBuilder
         $finalBlock = new $baseClass();
 
         foreach (Context::getModules() as $module) {
-            foreach ($module->getBlockOverrides() as $base => $override) {
+            foreach ($module->getBlockWrappers() as $base => $override) {
                 if ($base === $baseClass) {
                     $finalBlock = new $override($finalBlock);
                 }
