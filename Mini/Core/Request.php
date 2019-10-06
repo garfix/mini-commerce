@@ -51,4 +51,9 @@ class Request
     {
         return $this->post;
     }
+
+    public function getPageType()
+    {
+
+    }
 }

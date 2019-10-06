@@ -35,7 +35,8 @@ Context::setCurrentContext(new Context(
 
 $routeFinder = new RouteFinder();
 $requestHandler = $routeFinder->findRequestHandler();
-$response = $requestHandler->getResponse();
+
+$response = $requestHandler->createResponse();
 
 foreach ($response->getHeaders() as $header) {
     header($header);

@@ -7,5 +7,5 @@ namespace Mini\Core;
  */
 abstract class RequestHandler
 {
-    public abstract function getResponse(): Response;
+    public abstract function createResponse(): Response;
 }
