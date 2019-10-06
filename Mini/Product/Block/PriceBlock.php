@@ -3,18 +3,13 @@
 namespace Mini\Product\Block;
 
 use Mini\Core\Block;
+use Mini\Product\ProductPageContext;
 
 /**
  * @author Patrick van Bergen
  */
-class ProductMain extends Block
+class PriceBlock extends Block
 {
-    public function getChildren(): array
-    {
-        return [
-            PriceBlock::class
-        ];
-    }
 
     /**
      * @param string[] $childBlocks
@@ -22,6 +17,6 @@ class ProductMain extends Block
      */
     public function render(array $childBlocks): string
     {
-        return 'product main ' . $childBlocks[PriceBlock::class];
+        return 'product id: ' . ProductPageContext::getProductId();
     }
 }
