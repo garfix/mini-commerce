@@ -34,4 +34,12 @@ abstract class BasicModule
     {
         return [];
     }
+
+    /**
+     * @return []string
+     */
+    public function getServiceWrappers(): array
+    {
+        return [];
+    }
 }

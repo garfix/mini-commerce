@@ -3,6 +3,8 @@
 namespace Mini\Product\Block;
 
 use Mini\Core\Block;
+use Mini\Core\ServiceProcessor;
+use Mini\Product\Api\FinalPriceService;
 use Mini\Product\ProductPageContext;
 
 /**
@@ -17,6 +19,10 @@ class PriceBlock extends Block
      */
     public function render(array $childBlocks): string
     {
-        return '[product id: ' . ProductPageContext::getProductId() . ']';
+        $productId = ProductPageContext::getProductId();
+
+        $finalPrice = ServiceProcessor::process(FinalPriceService::class, $productId);
+
+        return '[product id: ' . $productId . '; price: ' . $finalPrice  . ']';
     }
 }

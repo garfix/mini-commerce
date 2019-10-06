@@ -28,10 +28,12 @@ class ModuleUpdater
                 $moduleId = Context::getDb()->createEntity('module');
                 Context::getDb()->setAttribute('module', $moduleId, 'name', $module->getFrontName());
             }
+
             $version = Context::getDb()->getAttributeValue('module', $moduleId, 'version');
             if (!$version) {
                 $version = 0;
             }
+
             while ($version < $codeVersion) {
                 $version++;
                 $class = $module->completeClassname('Setup\\Setup' . $version);
