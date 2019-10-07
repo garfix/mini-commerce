@@ -7,7 +7,7 @@ namespace Mini\Core;
  */
 class ServiceProcessor
 {
-    public static function process(string $serviceClass, string $methodName)
+    public static function getMethod(string $serviceClass, string $methodName)
     {
         $method = self::getOuterMethod($serviceClass, $methodName);
         return $method;
