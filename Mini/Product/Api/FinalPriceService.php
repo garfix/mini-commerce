@@ -13,6 +13,6 @@ class FinalPriceService extends Service
 {
     public static function getFinalPrice(int $productId)
     {
-        return ServiceProcessor::process(FinalPriceServiceModel::class, 'getFinalPrice', $productId);
+        return ServiceProcessor::process(FinalPriceServiceModel::class, 'getFinalPrice')($productId);
     }
 }
