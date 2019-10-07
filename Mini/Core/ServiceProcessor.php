@@ -9,16 +9,14 @@ class ServiceProcessor
 {
     public static function process(string $serviceClass, string $methodName, $input)
     {
-        $method = self::getFinalService($serviceClass, $methodName);
+        $method = self::getOuterMethod($serviceClass, $methodName);
         $output = $method($input);
         return $output;
     }
 
-    protected static function getFinalService($baseClass, $methodName)
+    protected static function getOuterMethod($baseClass, $methodName)
     {
-        $finalServiceMethod = function($input) use ($baseClass, $methodName) {
-            return $baseClass::$methodName($input);
-        };
+        $finalServiceMethod = [$baseClass, $methodName];
 
         foreach (Context::getModules() as $module) {
             foreach ($module->getServiceWrappers() as $base => $override) {

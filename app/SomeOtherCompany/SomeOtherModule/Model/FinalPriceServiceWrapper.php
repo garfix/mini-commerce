@@ -1,6 +1,6 @@
 <?php
 
-namespace SomeOtherCompany\SomeOtherModule\Api;
+namespace SomeOtherCompany\SomeOtherModule\Model;
 
 use Mini\Core\ServiceWrapper;
 
