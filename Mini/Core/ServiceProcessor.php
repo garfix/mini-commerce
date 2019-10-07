@@ -7,25 +7,30 @@ namespace Mini\Core;
  */
 class ServiceProcessor
 {
-    public static function process(string $serviceClass, $input)
+    public static function process(string $serviceClass, string $methodName, $input)
     {
-        $class = self::getFinalService($serviceClass);
-        $output = $class->execute($input);
+        $method = self::getFinalService($serviceClass, $methodName);
+        $output = $method($input);
         return $output;
     }
 
-    protected static function getFinalService($baseClass)
+    protected static function getFinalService($baseClass, $methodName)
     {
-        $finalService = new $baseClass();
+        $finalServiceMethod = function($input) use ($baseClass, $methodName) {
+            return $baseClass::$methodName($input);
+        };
 
         foreach (Context::getModules() as $module) {
             foreach ($module->getServiceWrappers() as $base => $override) {
                 if ($base === $baseClass) {
-                    $finalService = new $override($finalService);
+                    $innerMethod = $finalServiceMethod;
+                    $finalServiceMethod = function($input) use ($override, $methodName, $innerMethod) {
+                        return $override::$methodName($innerMethod, $input);
+                    };
                 }
             }
         }
 
-        return $finalService;
+        return $finalServiceMethod;
     }
 }

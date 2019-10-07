@@ -3,14 +3,16 @@
 namespace Mini\Product\Api;
 
 use Mini\Core\Service;
+use Mini\Core\ServiceProcessor;
+use Mini\Product\Model\FinalPriceServiceModel;
 
 /**
  * @author Patrick van Bergen
  */
 class FinalPriceService extends Service
 {
-    public function execute(int $productId)
+    public static function getFinalPrice(int $productId)
     {
-        return 100;
+        return ServiceProcessor::process(FinalPriceServiceModel::class, 'getFinalPrice', $productId);
     }
 }
