@@ -38,7 +38,7 @@ abstract class BasicModule
     /**
      * @return []string
      */
-    public function getModelWrappers(): array
+    public function getObjectWrappers(): array
     {
         return [];
     }

@@ -25,7 +25,7 @@ class Module extends BasicModule
         ];
     }
 
-    public function getModelWrappers(): array
+    public function getObjectWrappers(): array
     {
         return [
             FinalPriceService::class => FinalPriceServiceWrapper::class
