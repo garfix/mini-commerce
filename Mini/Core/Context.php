@@ -10,6 +10,9 @@ class Context
     /** @var Context */
     private static $currentContext = null;
 
+    /** @var Resolver */
+    protected $resolver;
+
     /** @var array */
     protected $modules;
 
@@ -36,6 +39,7 @@ class Context
      * Context constructor.
      */
     public function __construct(
+        Resolver $resolver,
         array $modules,
         Request $request,
         Db $db,
@@ -46,6 +50,12 @@ class Context
         $this->logger = $logger;
         $this->request = $request;
         $this->modules = $modules;
+        $this->resolver = $resolver;
+    }
+
+    public static function resolve($className)
+    {
+        return self::$currentContext->resolver->getModel($className);
     }
 
     /**

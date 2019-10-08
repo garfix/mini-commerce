@@ -7,17 +7,17 @@ namespace Mini\Core;
  */
 class Resolver
 {
-    static protected $models = [];
+    protected $models = [];
 
-    public static function getModel(string $serviceInterface)
+    public function getModel(string $serviceInterface)
     {
-        return self::getOuterModel($serviceInterface);
+        return $this->getOuterModel($serviceInterface);
     }
 
-    protected static function getOuterModel($serviceInterface)
+    protected function getOuterModel($serviceInterface)
     {
-        if (array_key_exists($serviceInterface, self::$models)) {
-            return self::$models[$serviceInterface];
+        if (array_key_exists($serviceInterface, $this->models)) {
+            return $this->models[$serviceInterface];
         }
 
         $modelInterface = preg_replace('#\\\\Api\\\\#', '\\Model\\', $serviceInterface) . 'Model';
@@ -25,14 +25,14 @@ class Resolver
         $model = new $modelInterface();
 
         foreach (Context::getModules() as $module) {
-            foreach ($module->getModelWrappers() as $baseModel => $modelWrapper) {
-                if ($baseModel === $modelInterface) {
-                    $model = new $modelWrapper($model);
-                }
+            $wrappers = $module->getModelWrappers();
+            if (array_key_exists($modelInterface, $wrappers)) {
+                $modelWrapper = $wrappers[$modelInterface];
+                $model = new $modelWrapper($model);
             }
         }
 
-        self::$models[$serviceInterface] = $model;
+        $this->models[$serviceInterface] = $model;
 
         return $model;
     }
