@@ -5,7 +5,15 @@ namespace Mini\Product\Api;
 /**
  * @author Patrick van Bergen
  */
-interface FinalPriceService
+class FinalPriceService
 {
-    public function getFinalPrice(int $productId);
+    protected function calculatePrice($price)
+    {
+        return $price;
+    }
+
+    public function getFinalPrice(int $productId)
+    {
+        return 100;
+    }
 }

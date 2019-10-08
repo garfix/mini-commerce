@@ -4,7 +4,7 @@ namespace SomeCompany\SomeModule;
 
 use Mini\Core\BasicModule;
 use Mini\Product\Block\PriceBlock;
-use Mini\Product\Model\FinalPriceServiceModel;
+use Mini\Product\Api\FinalPriceService;
 use SomeCompany\SomeModule\Block\SomePriceBlock;
 use SomeCompany\SomeModule\Model\FinalPriceServiceWrapper;
 
@@ -28,7 +28,7 @@ class Module extends BasicModule
     public function getModelWrappers(): array
     {
         return [
-            FinalPriceServiceModel::class => FinalPriceServiceWrapper::class
+            FinalPriceService::class => FinalPriceServiceWrapper::class
         ];
     }
 }

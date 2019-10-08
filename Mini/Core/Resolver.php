@@ -9,18 +9,16 @@ class Resolver
 {
     protected $models = [];
 
-    public function getModel(string $serviceInterface)
+    public function getModel(string $interface)
     {
-        return $this->getOuterModel($serviceInterface);
+        return $this->getOuterModel($interface);
     }
 
-    protected function getOuterModel($serviceInterface)
+    protected function getOuterModel($modelInterface)
     {
-        if (array_key_exists($serviceInterface, $this->models)) {
-            return $this->models[$serviceInterface];
+        if (array_key_exists($modelInterface, $this->models)) {
+            return $this->models[$modelInterface];
         }
-
-        $modelInterface = preg_replace('#\\\\Api\\\\#', '\\Model\\', $serviceInterface) . 'Model';
 
         $model = new $modelInterface();
 
@@ -32,7 +30,7 @@ class Resolver
             }
         }
 
-        $this->models[$serviceInterface] = $model;
+        $this->models[$modelInterface] = $model;
 
         return $model;
     }

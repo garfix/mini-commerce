@@ -2,19 +2,19 @@
 
 namespace SomeOtherCompany\SomeOtherModule\Model;
 
-use Mini\Product\Model\FinalPriceServiceModel;
+use Mini\Product\Api\FinalPriceService;
 
 /**
  * @author Patrick van Bergen
  */
-class FinalPriceServiceWrapper extends FinalPriceServiceModel
+class FinalPriceServiceWrapper extends FinalPriceService
 {
     /**
-     * @var FinalPriceServiceModel
+     * @var FinalPriceService
      */
     protected $innerModel;
 
-    public function __construct(FinalPriceServiceModel $innerModel)
+    public function __construct(FinalPriceService $innerModel)
     {
         $this->innerModel = $innerModel;
     }

@@ -12,7 +12,6 @@ use Mini\Product\ProductPageContext;
  */
 class PriceBlock extends Block
 {
-
     /**
      * @param string[] $childBlocks
      * @return string

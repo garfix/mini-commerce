@@ -53,6 +53,10 @@ class Context
         $this->resolver = $resolver;
     }
 
+    /**
+     * @param $className
+     * @return object $className
+     */
     public static function resolve($className)
     {
         return self::$currentContext->resolver->getModel($className);
