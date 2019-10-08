@@ -7,4 +7,11 @@ namespace Mini\Core;
  */
 abstract class Service
 {
+    /**
+     * @return object|$this
+     */
+    public static function resolve()
+    {
+        return Context::resolve(get_called_class());
+    }
 }

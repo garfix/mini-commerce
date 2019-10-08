@@ -2,10 +2,12 @@
 
 namespace Mini\Product\Api;
 
+use Mini\Core\Service;
+
 /**
  * @author Patrick van Bergen
  */
-class FinalPriceService
+class FinalPriceService extends Service
 {
     protected function calculatePrice($price)
     {

@@ -55,7 +55,7 @@ class Context
 
     /**
      * @param $className
-     * @return object $className
+     * @return object
      */
     public static function resolve($className)
     {

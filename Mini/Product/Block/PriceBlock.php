@@ -3,7 +3,6 @@
 namespace Mini\Product\Block;
 
 use Mini\Core\Block;
-use Mini\Core\Context;
 use Mini\Product\Api\FinalPriceService;
 use Mini\Product\ProductPageContext;
 
@@ -20,7 +19,7 @@ class PriceBlock extends Block
     {
         $productId = ProductPageContext::getProductId();
 
-        $finalPrice = Context::resolve(FinalPriceService::class)->getFinalPrice($productId);
+        $finalPrice = FinalPriceService::resolve()->getFinalPrice($productId);
 
         return '[product id: ' . $productId . '; price: ' . $finalPrice  . ']';
     }

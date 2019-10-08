@@ -9,29 +9,29 @@ class Resolver
 {
     protected $models = [];
 
-    public function getModel(string $interface)
+    public function getModel(string $className)
     {
-        return $this->getOuterModel($interface);
+        return $this->getOuterModel($className);
     }
 
-    protected function getOuterModel($modelInterface)
+    protected function getOuterModel($className)
     {
-        if (array_key_exists($modelInterface, $this->models)) {
-            return $this->models[$modelInterface];
+        if (array_key_exists($className, $this->models)) {
+            return $this->models[$className];
         }
 
-        $model = new $modelInterface();
+        $object = new $className();
 
         foreach (Context::getModules() as $module) {
             $wrappers = $module->getModelWrappers();
-            if (array_key_exists($modelInterface, $wrappers)) {
-                $modelWrapper = $wrappers[$modelInterface];
-                $model = new $modelWrapper($model);
+            if (array_key_exists($className, $wrappers)) {
+                $objectWrapper = $wrappers[$className];
+                $object = new $objectWrapper($object);
             }
         }
 
-        $this->models[$modelInterface] = $model;
+        $this->models[$className] = $object;
 
-        return $model;
+        return $object;
     }
 }
