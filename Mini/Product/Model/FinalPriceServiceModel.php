@@ -2,12 +2,19 @@
 
 namespace Mini\Product\Model;
 
+use Mini\Product\Api\FinalPriceService;
+
 /**
  * @author Patrick van Bergen
  */
-class FinalPriceServiceModel
+class FinalPriceServiceModel implements FinalPriceService
 {
-    public static function getFinalPrice(int $productId)
+    protected function calculatePrice($price)
+    {
+        return $price;
+    }
+
+    public function getFinalPrice(int $productId)
     {
         return 100;
     }

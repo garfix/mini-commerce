@@ -10,7 +10,7 @@ class ServiceWrapper
     /** @var Service */
     protected $innerService;
 
-    public function __construct(Service $innerService)
+    public function __construct($innerService)
     {
         $this->innerService = $innerService;
     }

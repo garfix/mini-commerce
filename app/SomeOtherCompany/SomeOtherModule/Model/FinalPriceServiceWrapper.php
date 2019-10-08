@@ -2,15 +2,25 @@
 
 namespace SomeOtherCompany\SomeOtherModule\Model;
 
-use Mini\Core\ServiceWrapper;
+use Mini\Product\Model\FinalPriceServiceModel;
 
 /**
  * @author Patrick van Bergen
  */
-class FinalPriceServiceWrapper extends ServiceWrapper
+class FinalPriceServiceWrapper extends FinalPriceServiceModel
 {
-    public static function getFinalPrice(callable $innerMethod, int $productId)
+    /**
+     * @var FinalPriceServiceModel
+     */
+    protected $innerModel;
+
+    public function __construct(FinalPriceServiceModel $innerModel)
     {
-        return $innerMethod($productId) + 10;
+        $this->innerModel = $innerModel;
+    }
+
+    public function getFinalPrice(int $productId)
+    {
+        return $this->calculatePrice($this->innerModel->getFinalPrice($productId) + 10);
     }
 }
