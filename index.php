@@ -29,7 +29,7 @@ foreach ($moduleNames as $moduleName => $active) {
 $_SERVER['REQUEST_URI'] = '/blue-jeans';
 
 Context::setCurrentContext(new Context(
-    new ServiceResolver(),
+    new ServiceResolver($modules),
     $modules,
     new Request($_SERVER, $_GET, $_POST),
     new Db($environment['db']['dbName'], $environment['db']['dbHost'], $environment['db']['username'], $environment['db']['password']),
