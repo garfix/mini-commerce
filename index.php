@@ -5,7 +5,7 @@ use Mini\Core\Db;
 use Mini\Core\Logger;
 use Mini\Core\ModuleUpdater;
 use Mini\Core\Request;
-use Mini\Core\ObjectResolver;
+use Mini\Core\ServiceResolver;
 use Mini\Core\RouteFinder;
 
 ini_set('display_errors', 1);
@@ -29,7 +29,7 @@ foreach ($moduleNames as $moduleName => $active) {
 $_SERVER['REQUEST_URI'] = '/blue-jeans';
 
 Context::setCurrentContext(new Context(
-    new ObjectResolver(),
+    new ServiceResolver(),
     $modules,
     new Request($_SERVER, $_GET, $_POST),
     new Db($environment['db']['dbName'], $environment['db']['dbHost'], $environment['db']['username'], $environment['db']['password']),
