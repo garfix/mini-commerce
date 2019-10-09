@@ -17,27 +17,27 @@ class PageShell extends Block
         $this->mainBlock = $mainBlock;
     }
 
-    public function getChildren(): array
-    {
-        return [
-            Header::class,
-            Menu::class,
-            $this->mainBlock
-        ];
-    }
-
     public function render(): string
     {
-        return "
+        $html = "
             <html>
                 <head>
                 " . Header::resolve()->render() . " 
                 </head>
                 <body>
-                " . Menu::resolve()->render() . "
-                " . $this->mainBlock->render() . "
+                    " . Menu::resolve()->render() . "
+                    " . $this->mainBlock->render() . "<ul>";
+
+                    for ($i = 0; $i < 5; $i++) {
+                        $html .= "<li>" . $i . "</li>";
+                    }
+
+        $html .= "
+                    </ul>
                 </body>
             </html>        
         ";
+
+        return $html;
     }
 }
