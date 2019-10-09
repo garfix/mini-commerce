@@ -55,11 +55,11 @@ class Context
 
     /**
      * @param $className
-     * @return object
+     * @return ObjectResolver
      */
-    public static function resolve($className)
+    public static function getResolver(): ObjectResolver
     {
-        return self::$currentContext->resolver->resolveObject($className);
+        return self::$currentContext->resolver;
     }
 
     /**

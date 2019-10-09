@@ -5,7 +5,7 @@ namespace Mini\Core;
 /**
  * @author Patrick van Bergen
  */
-class RouteFinder
+class RouteFinder extends Service
 {
     public function findRequestHandler(): RequestHandler
     {

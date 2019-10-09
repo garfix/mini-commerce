@@ -5,7 +5,6 @@ use Mini\Core\Db;
 use Mini\Core\Logger;
 use Mini\Core\ModuleUpdater;
 use Mini\Core\Request;
-use Mini\Core\RequestBuilder;
 use Mini\Core\ObjectResolver;
 use Mini\Core\RouteFinder;
 
@@ -38,12 +37,10 @@ Context::setCurrentContext(new Context(
 ));
 
 $updater = new ModuleUpdater();
-$updater->initialize();
-$updater->update();
+//$updater->initialize();
+//$updater->update();
 
-$routeFinder = new RouteFinder();
-$requestHandler = $routeFinder->findRequestHandler();
-
+$requestHandler = RouteFinder::resolve()->findRequestHandler();
 $response = $requestHandler->createResponse();
 
 foreach ($response->getHeaders() as $header) {
