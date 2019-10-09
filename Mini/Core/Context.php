@@ -13,6 +13,9 @@ class Context
     /** @var ServiceResolver */
     protected $resolver;
 
+    /** @var BlockResolver */
+    protected $blockResolver;
+
     /** @var array */
     protected $modules;
 
@@ -40,6 +43,7 @@ class Context
      */
     public function __construct(
         ServiceResolver $resolver,
+        BlockResolver $blockResolver,
         array $modules,
         Request $request,
         Db $db,
@@ -51,6 +55,7 @@ class Context
         $this->request = $request;
         $this->modules = $modules;
         $this->resolver = $resolver;
+        $this->blockResolver = $blockResolver;
     }
 
     /**
@@ -60,6 +65,11 @@ class Context
     public static function getResolver(): ServiceResolver
     {
         return self::$currentContext->resolver;
+    }
+
+    public static function getBlockResolver(): BlockResolver
+    {
+        return self::$currentContext->blockResolver;
     }
 
     /**

@@ -5,11 +5,12 @@ namespace Mini\Core;
 /**
  * @author Patrick van Bergen
  */
-class PageBuilder
+class PageBuilder extends Service
 {
-    public function buildPage(string $mainBlockClass): string
+    public function buildPage(Block $mainBlock): string
     {
-        return $this->buildBlock(new PageShell($mainBlockClass));
+        $shell = new PageShell($mainBlock);
+        return $shell->render();
     }
 
     protected function buildBlock(Block $block): string

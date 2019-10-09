@@ -21,8 +21,8 @@ class BlockWrapper extends Block
      * @param string[] $childBlocks
      * @return string
      */
-    public function render(array $childBlocks): string
+    public function render(): string
     {
-        return $this->innerBlock->render($childBlocks);
+        return $this->innerBlock->render();
     }
 }

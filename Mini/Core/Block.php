@@ -7,14 +7,17 @@ namespace Mini\Core;
  */
 abstract class Block
 {
-    public function getChildren(): array
+    /**
+     * @return object|$this
+     */
+    public static function resolve()
     {
-        return [];
+        return Context::getBlockResolver()->resolveBlock(get_called_class());
     }
 
     /**
      * @param string[] $childBlocks
      * @return string
      */
-    public abstract function render(array $childBlocks): string;
+    public abstract function render(): string;
 }

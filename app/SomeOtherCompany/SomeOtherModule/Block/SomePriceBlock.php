@@ -2,21 +2,32 @@
 
 namespace SomeOtherCompany\SomeOtherModule\Block;
 
-use Mini\Core\BlockWrapper;
+use Mini\Core\Block;
+use Mini\Product\Block\PriceBlock;
 use Mini\Product\ProductPageContext;
 
 /**
  * @author Patrick van Bergen
  */
-class SomePriceBlock extends BlockWrapper
+class SomePriceBlock extends PriceBlock
 {
+    /**
+     * @var PriceBlock
+     */
+    protected $innerBlock;
+
+    public function __construct(Block $innerBlock)
+    {
+        $this->innerBlock = $innerBlock;
+    }
+
     /**
      * @param string[] $childBlocks
      * @return string
      */
-    public function render(array $childBlocks): string
+    public function render(): string
     {
         return '[some other module product id: ' . ProductPageContext::getProductId() .
-            $this->innerBlock->render($childBlocks) . ']';
+            $this->innerBlock->render() . ']';
     }
 }

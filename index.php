@@ -1,5 +1,6 @@
 <?php
 
+use Mini\Core\BlockResolver;
 use Mini\Core\Context;
 use Mini\Core\Db;
 use Mini\Core\Logger;
@@ -30,6 +31,7 @@ $_SERVER['REQUEST_URI'] = '/blue-jeans';
 
 Context::setCurrentContext(new Context(
     new ServiceResolver($modules),
+    new BlockResolver($modules),
     $modules,
     new Request($_SERVER, $_GET, $_POST),
     new Db($environment['db']['dbName'], $environment['db']['dbHost'], $environment['db']['username'], $environment['db']['password']),

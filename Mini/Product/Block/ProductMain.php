@@ -20,8 +20,8 @@ class ProductMain extends Block
      * @param string[] $childBlocks
      * @return string
      */
-    public function render(array $childBlocks): string
+    public function render(): string
     {
-        return 'product main ' . $childBlocks[PriceBlock::class];
+        return '[product main ' . PriceBlock::resolve()->render([]) . ']';
     }
 }

@@ -7,17 +7,20 @@ namespace Mini\Core;
  */
 class ServiceResolver
 {
+    /** @var string[][] */
     protected $wrappers = [];
 
+    /** @var Service[] */
     protected $resolvedServices = [];
 
+    /**
+     * ServiceResolver constructor.
+     * @param Module[] $modules
+     */
     public function __construct(array $modules)
     {
         foreach ($modules as $module) {
             foreach ($module->getServiceWrappers() as $original => $wrapper) {
-                if (!array_key_exists($original, $this->wrappers)) {
-                    $this->wrappers[$original] = [];
-                }
                 $this->wrappers[$original][] = $wrapper;
             }
         }
@@ -25,9 +28,7 @@ class ServiceResolver
 
     public function resolveService(string $serviceClass)
     {
-        if (!array_key_exists($serviceClass, $this->wrappers)) {
-            return new $serviceClass();
-        } else if (array_key_exists($serviceClass, $this->resolvedServices)) {
+        if (array_key_exists($serviceClass, $this->resolvedServices)) {
             return $this->resolvedServices[$serviceClass];
         } else {
             return $this->getOuterService($serviceClass);
@@ -38,8 +39,10 @@ class ServiceResolver
     {
         $service = new $serviceClass();
 
-        foreach ($this->wrappers[$serviceClass] as $wrapper) {
-            $service = new $wrapper($service);
+        if (array_key_exists($serviceClass, $this->wrappers)) {
+            foreach ($this->wrappers[$serviceClass] as $wrapper) {
+                $service = new $wrapper($service);
+            }
         }
 
         $this->resolvedServices[$serviceClass] = $service;

@@ -7,7 +7,7 @@ namespace Mini\Core;
  */
 class Menu extends Block
 {
-    public function render(array $childBlocks): string
+    public function render(): string
     {
         return 'menu';
     }

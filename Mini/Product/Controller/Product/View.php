@@ -15,10 +15,8 @@ class View extends RequestHandler
 {
     public function createResponse(): Response
     {
-        $pageBuilder = new PageBuilder();
-
         ProductPageContext::setProductId(1);
 
-        return new Response([], $pageBuilder->buildPage(ProductMain::class));
+        return new Response([], PageBuilder::resolve()->buildPage(ProductMain::resolve()));
     }
 }

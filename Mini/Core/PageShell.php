@@ -8,13 +8,13 @@ namespace Mini\Core;
 class PageShell extends Block
 {
     /**
-     * @var string
+     * @var Block
      */
-    protected $mainBlockClass;
+    protected $mainBlock;
 
-    public function __construct(string $mainBlockClass)
+    public function __construct(Block $mainBlock)
     {
-        $this->mainBlockClass = $mainBlockClass;
+        $this->mainBlock = $mainBlock;
     }
 
     public function getChildren(): array
@@ -22,23 +22,22 @@ class PageShell extends Block
         return [
             Header::class,
             Menu::class,
-            $this->mainBlockClass
+            $this->mainBlock
         ];
     }
 
-    public function render(array $childBlocks): string
+    public function render(): string
     {
-        return <<<HTML
-<html>
-    <head>
-        {$childBlocks[Header::class]} 
-    </head>
-    <body>
-        {$childBlocks[Menu::class]} 
-        {$childBlocks[$this->mainBlockClass]}
-    </body>
-</html>        
-HTML;
-
+        return "
+            <html>
+                <head>
+                " . Header::resolve()->render() . " 
+                </head>
+                <body>
+                " . Menu::resolve()->render() . "
+                " . $this->mainBlock->render() . "
+                </body>
+            </html>        
+        ";
     }
 }
