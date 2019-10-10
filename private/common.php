@@ -13,10 +13,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require __DIR__ . '/etc/autoload.php';
+require __DIR__ . '/../etc/autoload.php';
 
-$moduleNames = require __DIR__ . '/etc/modules.php';
-$environment = require __DIR__ . '/etc/environment.php';
+$moduleNames = require __DIR__ . '/../etc/modules.php';
+$environment = require __DIR__ . '/../etc/environment.php';
 
 $modules = [];
 foreach ($moduleNames as $moduleName => $active) {
@@ -35,22 +35,10 @@ Context::setCurrentContext(new Context(
     $modules,
     new Request($_SERVER, $_GET, $_POST),
     new Db($environment['db']['dbName'], $environment['db']['dbHost'], $environment['db']['username'], $environment['db']['password']),
-    new Logger(__DIR__ . "/log")
+    new Logger(__DIR__ . "/../log")
 ));
 
 $updater = new ModuleUpdater();
 //$updater->initialize();
 //$updater->update();
 
-$requestHandler = RouteFinder::resolve()->findRequestHandler();
-$response = $requestHandler->createResponse();
-
-foreach ($response->getHeaders() as $header) {
-    header($header);
-}
-
-echo $response->getBody();
-
-Context::getLogger()->log(date('Y-m-d H:i:s'));
-
-Context::setCurrentContext(null);
