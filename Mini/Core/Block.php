@@ -19,5 +19,5 @@ abstract class Block
      * @param string[] $childBlocks
      * @return string
      */
-    public abstract function render(): string;
+    public abstract function render();
 }

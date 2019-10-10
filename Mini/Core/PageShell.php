@@ -17,27 +17,24 @@ class PageShell extends Block
         $this->mainBlock = $mainBlock;
     }
 
-    public function render(): string
-    {
-        $html = "
-            <html>
-                <head>
-                " . Header::resolve()->render() . " 
-                </head>
-                <body>
-                    " . Menu::resolve()->render() . "
-                    " . $this->mainBlock->render() . "<ul>";
+    public function render()
+    { ?>
 
-                    for ($i = 0; $i < 5; $i++) {
-                        $html .= "<li>" . $i . "</li>";
-                    }
+        <html>
+            <head>
+            <?php Header::resolve()->render() ?>
+            </head>
+            <body>
+                <?php Menu::resolve()->render() ?>
+                <?php $this->mainBlock->render() ?>
+                <ul>
+                <?php for ($i = 0; $i < 5; $i++) : ?>
+                    <li><?= $i ?></li>
+                <?php endfor; ?>
+                </ul>
+            </body>
+        </html>
 
-        $html .= "
-                    </ul>
-                </body>
-            </html>        
-        ";
-
-        return $html;
+        <?php
     }
 }

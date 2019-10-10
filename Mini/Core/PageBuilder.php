@@ -10,7 +10,13 @@ class PageBuilder extends Service
     public function buildPage(Block $mainBlock): string
     {
         $shell = new PageShell($mainBlock);
-        return $shell->render();
+
+        ob_start();
+        $shell->render();
+        $contents = ob_get_contents();
+        ob_end_clean();
+
+        return $contents;
     }
 
     protected function buildBlock(Block $block): string

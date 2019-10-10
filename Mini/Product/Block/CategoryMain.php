@@ -14,8 +14,8 @@ class CategoryMain extends Block
      * @param string[] $childBlocks
      * @return string
      */
-    public function render(): string
+    public function render()
     {
-        return 'category main';
+        echo 'category main';
     }
 }

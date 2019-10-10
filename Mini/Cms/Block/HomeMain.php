@@ -14,8 +14,8 @@ class HomeMain extends Block
      * @param string[] $childBlocks
      * @return string
      */
-    public function render(): string
+    public function render()
     {
-        return 'home';
+        echo 'home';
     }
 }

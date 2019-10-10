@@ -15,12 +15,12 @@ class PriceBlock extends Block
      * @param string[] $childBlocks
      * @return string
      */
-    public function render(): string
+    public function render()
     {
         $productId = ProductPageContext::getProductId();
 
         $finalPrice = FinalPriceService::resolve()->getFinalPrice($productId);
 
-        return '[product id: ' . $productId . '; price: ' . $finalPrice  . ']';
+        echo '[product id: ' . $productId . '; price: ' . $finalPrice  . ']';
     }
 }
