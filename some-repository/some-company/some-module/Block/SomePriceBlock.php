@@ -4,7 +4,6 @@ namespace SomeCompany\SomeModule\Block;
 
 use Mini\Core\Block;
 use Mini\Product\Block\PriceBlock;
-use Mini\Product\ProductPageContext;
 
 /**
  * @author Patrick van Bergen

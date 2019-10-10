@@ -4,7 +4,6 @@ namespace SomeOtherCompany\SomeOtherModule\Block;
 
 use Mini\Core\Block;
 use Mini\Product\Block\PriceBlock;
-use Mini\Product\ProductPageContext;
 
 /**
  * @author Patrick van Bergen
@@ -30,7 +29,7 @@ class SomePriceBlock extends PriceBlock
 
         [some other module product id <?php $this->innerBlock->render([]) ?> ]
 
-        <?php
+    <?php
     }
 
 }
