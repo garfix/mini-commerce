@@ -3,6 +3,9 @@
 use Mini\Core\Context;
 use Mini\Core\RouteFinder;
 
+//$_SERVER['REQUEST_URI'] = '/product/product/view';
+$_SERVER['REQUEST_URI'] = '/blue-jeans';
+
 require_once __DIR__ . "/../private/common.php";
 
 $requestHandler = RouteFinder::resolve()->findRequestHandler();

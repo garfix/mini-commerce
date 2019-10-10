@@ -26,9 +26,6 @@ foreach ($moduleNames as $moduleName => $active) {
     }
 }
 
-//$_SERVER['REQUEST_URI'] = '/product/product/view';
-$_SERVER['REQUEST_URI'] = '/blue-jeans';
-
 Context::setCurrentContext(new Context(
     new ServiceResolver($modules),
     new BlockResolver($modules),

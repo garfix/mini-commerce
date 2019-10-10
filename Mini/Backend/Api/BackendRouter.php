@@ -2,8 +2,9 @@
 
 namespace Mini\Backend\Api;
 
+use Mini\Core\Context;
 use Mini\Core\Router;
-use Mini\Dashboard\Controller\View;
+use Mini\Dashboard\Controller\Backend\View;
 
 /**
  * @author Patrick van Bergen

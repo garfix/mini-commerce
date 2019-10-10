@@ -7,12 +7,10 @@ namespace Mini\Core;
  */
 class PageBuilder extends Service
 {
-    public function buildPage(Block $mainBlock): string
+    public function buildPage(Block $page): string
     {
-        $shell = new PageShell($mainBlock);
-
         ob_start();
-        $shell->render();
+        $page->render();
         $contents = ob_get_contents();
         ob_end_clean();
 

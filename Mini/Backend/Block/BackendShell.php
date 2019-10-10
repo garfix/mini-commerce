@@ -1,11 +1,13 @@
 <?php
 
-namespace Mini\Core;
+namespace Mini\Backend\Block;
+
+use Mini\Core\Block;
 
 /**
  * @author Patrick van Bergen
  */
-class PageShell extends Block
+class BackendShell extends Block
 {
     /**
      * @var Block
@@ -27,11 +29,6 @@ class PageShell extends Block
             <body>
                 <?php Menu::resolve()->render() ?>
                 <?php $this->mainBlock->render() ?>
-                <ul>
-                <?php for ($i = 0; $i < 5; $i++) : ?>
-                    <li><?= $i ?></li>
-                <?php endfor; ?>
-                </ul>
             </body>
         </html>
 
