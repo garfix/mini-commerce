@@ -1,15 +1,15 @@
 <?php
 
-namespace Mini\Backend\Block;
+namespace Mini\Catalog\Block\Backend;
 
-use Mini\Core\Api\Link;
 use Mini\Core\Block;
 
 /**
  * @author Patrick van Bergen
  */
-class Menu extends Block
+class ProductAdd extends Block
 {
+
     /**
      * @param string[] $childBlocks
      * @return string
@@ -17,7 +17,7 @@ class Menu extends Block
     public function render()
     {
         ?>
-        <a href="<?= Link::resolve()->create('page=catalog/product/add') ?>">Add product</a>
+        ADD
         <?php
     }
 }

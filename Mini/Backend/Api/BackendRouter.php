@@ -4,7 +4,7 @@ namespace Mini\Backend\Api;
 
 use Mini\Core\Context;
 use Mini\Core\Router;
-use Mini\Dashboard\Controller\Backend\Dashboard;
+use Mini\Dashboard\Controller\Backend\Dashboard\View;
 
 /**
  * @author Patrick van Bergen
@@ -13,7 +13,7 @@ class BackendRouter extends Router
 {
     public function findRequestHandler(string $url)
     {
-        if (preg_match('#^/([^/]+)/([^/]+)/([^/]+)$#', $url, $matches)) {
+        if (preg_match('#^([^/]+)/([^/]+)/([^/]+)$#', $url, $matches)) {
             $frontName = $matches[1];
             $entity = $matches[2];
             $action = $matches[3];
@@ -31,6 +31,6 @@ class BackendRouter extends Router
 
         }
 
-        return new Dashboard();
+        return new View();
     }
 }

@@ -2,7 +2,11 @@
 
 namespace Mini\Catalog\Controller\Backend\Product;
 
+use Mini\Backend\Block\BackendShell;
+use Mini\Catalog\Block\Backend\ProductAdd;
+use Mini\Core\Api\PageBuilder;
 use Mini\Core\RequestHandler;
+use Mini\Core\Response;
 
 /**
  * @author Patrick van Bergen
@@ -10,8 +14,8 @@ use Mini\Core\RequestHandler;
 class Add extends RequestHandler
 {
 
-    public function createResponse(): \Mini\Core\Response
+    public function createResponse(): Response
     {
-        // TODO: Implement createResponse() method.
+        return new Response([], PageBuilder::resolve()->buildPage(BackendShell::resolve(), ProductAdd::resolve()));
     }
 }

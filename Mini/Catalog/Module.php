@@ -16,7 +16,7 @@ class Module extends BasicModule
 
     public function getFrontName()
     {
-        return 'product';
+        return 'catalog';
     }
 
     public function getRouter()

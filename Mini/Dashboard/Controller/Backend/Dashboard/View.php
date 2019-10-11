@@ -1,6 +1,6 @@
 <?php
 
-namespace Mini\Dashboard\Controller\Backend;
+namespace Mini\Dashboard\Controller\Backend\Dashboard;
 
 use Mini\Core\Api\PageBuilder;
 use Mini\Backend\Block\BackendShell;
@@ -11,7 +11,7 @@ use Mini\Dashboard\Block\Backend\Dashboard as DashboardBlock;
 /**
  * @author Patrick van Bergen
  */
-class Dashboard extends RequestHandler
+class View extends RequestHandler
 {
     public function createResponse(): Response
     {
