@@ -17,7 +17,7 @@ class Menu extends Block
     public function render()
     {
         ?>
-        <a href="<?= Link::resolve()->create('product/add') ?>">Add product</a>
+        <a href="<?= Link::resolve()->create('page=product/add') ?>">Add product</a>
         <?php
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Mini\Product;
+namespace Mini\Catalog;
 
 use Mini\Core\RequestHandler;
 use Mini\Core\Router;
-use Mini\Product\Controller\Product\View;
+use Mini\Catalog\Controller\Frontend\Product\View;
 
 /**
  * @author Patrick van Bergen

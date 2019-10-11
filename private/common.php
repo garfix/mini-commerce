@@ -7,7 +7,6 @@ use Mini\Core\Api\Logger;
 use Mini\Core\ModuleUpdater;
 use Mini\Core\Request;
 use Mini\Core\ServiceResolver;
-use Mini\Core\RouteFinder;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Mini\Product\Setup;
+namespace Mini\Catalog\Setup;
 
 use Mini\Core\Context;
 

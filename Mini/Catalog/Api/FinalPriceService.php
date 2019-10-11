@@ -1,6 +1,6 @@
 <?php
 
-namespace Mini\Product\Api;
+namespace Mini\Catalog\Api;
 
 use Mini\Core\Service;
 

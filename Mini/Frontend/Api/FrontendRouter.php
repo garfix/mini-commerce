@@ -1,11 +1,14 @@
 <?php
 
-namespace Mini\Core;
+namespace Mini\Frontend\Api;
+
+use Mini\Core\Context;
+use Mini\Core\Router;
 
 /**
  * @author Patrick van Bergen
  */
-class ModuleRouter extends Router
+class FrontendRouter extends Router
 {
     public function findRequestHandler(string $url)
     {
@@ -16,7 +19,7 @@ class ModuleRouter extends Router
 
             foreach (Context::getModules() as $module) {
                 if ($module->getFrontName() === $frontName) {
-                    $handlerClass = $module->completeClassname('Controller\\' . ucfirst($entity) . '\\' . ucfirst($action));
+                    $handlerClass = $module->completeClassname('Controller\\Frontend\\' . ucfirst($entity) . '\\' . ucfirst($action));
                     if (!class_exists($handlerClass)) {
                         Context::getLogger()->log("Router: class not found: " . $handlerClass);
                     } else {

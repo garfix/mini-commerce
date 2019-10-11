@@ -1,13 +1,13 @@
 <?php
 
-namespace Mini\Product\Controller\Product;
+namespace Mini\Catalog\Controller\Frontend\Product;
 
 use Mini\Core\Api\PageBuilder;
 use Mini\Core\RequestHandler;
 use Mini\Core\Response;
 use Mini\Frontend\Block\FrontendShell;
-use Mini\Product\Block\ProductMain;
-use Mini\Product\ProductPageContext;
+use Mini\Catalog\Block\ProductMain;
+use Mini\Catalog\ProductPageContext;
 
 /**
  * @author Patrick van Bergen

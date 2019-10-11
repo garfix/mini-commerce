@@ -3,7 +3,7 @@
 namespace SomeOtherCompany\SomeOtherModule\Block;
 
 use Mini\Core\Block;
-use Mini\Product\Block\PriceBlock;
+use Mini\Catalog\Block\PriceBlock;
 
 /**
  * @author Patrick van Bergen

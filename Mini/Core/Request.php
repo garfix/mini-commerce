@@ -37,6 +37,16 @@ class Request
     }
 
     /**
+     * Returns the request uri without the parameters
+     * @return string
+     */
+    public function getBaseUri(): string
+    {
+        preg_match('/^([^?]*)/', $this->server['REQUEST_URI'], $matches);
+        return $matches[1];
+    }
+
+    /**
      * @return array
      */
     public function getGet(): array
@@ -50,10 +60,5 @@ class Request
     public function getPost(): array
     {
         return $this->post;
-    }
-
-    public function getPageType()
-    {
-
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Mini\Product\Block;
+namespace Mini\Catalog\Block;
 
 use Mini\Core\Block;
-use Mini\Product\Api\FinalPriceService;
-use Mini\Product\ProductPageContext;
+use Mini\Catalog\Api\FinalPriceService;
+use Mini\Catalog\ProductPageContext;
 
 /**
  * @author Patrick van Bergen

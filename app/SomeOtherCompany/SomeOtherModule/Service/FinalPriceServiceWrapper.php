@@ -2,7 +2,7 @@
 
 namespace SomeOtherCompany\SomeOtherModule\Service;
 
-use Mini\Product\Api\FinalPriceService;
+use Mini\Catalog\Api\FinalPriceService;
 
 /**
  * @author Patrick van Bergen

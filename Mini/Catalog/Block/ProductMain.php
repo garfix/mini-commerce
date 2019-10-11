@@ -1,6 +1,6 @@
 <?php
 
-namespace Mini\Product\Block;
+namespace Mini\Catalog\Block;
 
 use Mini\Core\Block;
 

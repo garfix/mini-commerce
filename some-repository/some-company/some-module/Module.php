@@ -3,8 +3,8 @@
 namespace SomeCompany\SomeModule;
 
 use Mini\Core\BasicModule;
-use Mini\Product\Block\PriceBlock;
-use Mini\Product\Api\FinalPriceService;
+use Mini\Catalog\Block\PriceBlock;
+use Mini\Catalog\Api\FinalPriceService;
 use SomeCompany\SomeModule\Block\SomePriceBlock;
 use SomeCompany\SomeModule\Service\FinalPriceServiceWrapper;
 
