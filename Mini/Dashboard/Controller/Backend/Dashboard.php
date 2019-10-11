@@ -13,9 +13,8 @@ use Mini\Dashboard\Block\Backend\Dashboard as DashboardBlock;
  */
 class Dashboard extends RequestHandler
 {
-
     public function createResponse(): Response
     {
-        return new Response([], PageBuilder::resolve()->buildPage(new BackendShell(DashboardBlock::resolve())));
+        return new Response([], PageBuilder::resolve()->buildPage(BackendShell::resolve(), DashboardBlock::resolve()));
     }
 }

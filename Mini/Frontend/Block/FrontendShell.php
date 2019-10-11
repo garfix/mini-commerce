@@ -3,24 +3,14 @@
 namespace Mini\Frontend\Block;
 
 use Mini\Core\Block;
-use Mini\Core\Menu;
+use Mini\Core\Shell;
 
 /**
  * @author Patrick van Bergen
  */
-class PageShell extends Block
+class FrontendShell extends Shell
 {
-    /**
-     * @var Block
-     */
-    protected $mainBlock;
-
-    public function __construct(Block $mainBlock)
-    {
-        $this->mainBlock = $mainBlock;
-    }
-
-    public function render()
+    public function renderWithChild(Block $child)
     { ?>
 
         <html>
@@ -29,7 +19,7 @@ class PageShell extends Block
             </head>
             <body>
                 <?php Menu::resolve()->render() ?>
-                <?php $this->mainBlock->render() ?>
+                <?php $child->render() ?>
                 <ul>
                 <?php for ($i = 0; $i < 5; $i++) : ?>
                     <li><?= $i ?></li>

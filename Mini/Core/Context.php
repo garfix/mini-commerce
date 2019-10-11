@@ -2,7 +2,7 @@
 
 namespace Mini\Core;
 
-use Mini\Core\Api\Logger;
+use Mini\Core\Logger;
 
 /**
  * @author Patrick van Bergen

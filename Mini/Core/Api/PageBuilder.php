@@ -4,16 +4,17 @@ namespace Mini\Core\Api;
 
 use Mini\Core\Block;
 use Mini\Core\Service;
+use Mini\Core\Shell;
 
 /**
  * @author Patrick van Bergen
  */
 class PageBuilder extends Service
 {
-    public function buildPage(Block $page): string
+    public function buildPage(Shell $shell, Block $page): string
     {
         ob_start();
-        $page->render();
+        $shell->renderWithChild($page);
         $contents = ob_get_contents();
         ob_end_clean();
 
