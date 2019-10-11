@@ -3,24 +3,13 @@
 namespace Mini\Backend\Block;
 
 use Mini\Core\Block;
-use Mini\Core\Shell;
 
 /**
  * @author Patrick van Bergen
  */
-class BackendShell extends Shell
+class BackendShell extends Block
 {
-//    /**
-//     * @var Block
-//     */
-//    protected $mainBlock;
-//
-//    public function __construct(Block $mainBlock)
-//    {
-//        $this->mainBlock = $mainBlock;
-//    }
-
-    public function renderWithChild(Block $child)
+    public function render()
     { ?>
 
         <html>
@@ -29,7 +18,7 @@ class BackendShell extends Shell
         </head>
         <body>
         <?php Menu::resolve()->render() ?>
-        <?php $child->render() ?>
+        ##main##
         </body>
         </html>
 

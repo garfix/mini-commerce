@@ -3,14 +3,13 @@
 namespace Mini\Frontend\Block;
 
 use Mini\Core\Block;
-use Mini\Core\Shell;
 
 /**
  * @author Patrick van Bergen
  */
-class FrontendShell extends Shell
+class FrontendShell extends Block
 {
-    public function renderWithChild(Block $child)
+    public function render()
     { ?>
 
         <html>
@@ -19,7 +18,7 @@ class FrontendShell extends Shell
             </head>
             <body>
                 <?php Menu::resolve()->render() ?>
-                <?php $child->render() ?>
+                ##main##
                 <ul>
                 <?php for ($i = 0; $i < 5; $i++) : ?>
                     <li><?= $i ?></li>
