@@ -1,6 +1,9 @@
 <?php
 
-namespace Mini\Core;
+namespace Mini\Frontend\Block;
+
+use Mini\Core\Block;
+use Mini\Core\Menu;
 
 /**
  * @author Patrick van Bergen

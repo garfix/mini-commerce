@@ -3,7 +3,7 @@
 use Mini\Core\BlockResolver;
 use Mini\Core\Context;
 use Mini\Core\Db;
-use Mini\Core\Logger;
+use Mini\Core\Api\Logger;
 use Mini\Core\ModuleUpdater;
 use Mini\Core\Request;
 use Mini\Core\ServiceResolver;

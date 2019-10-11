@@ -1,6 +1,9 @@
 <?php
 
-namespace Mini\Core;
+namespace Mini\Core\Api;
+
+use Mini\Core\Block;
+use Mini\Core\Service;
 
 /**
  * @author Patrick van Bergen

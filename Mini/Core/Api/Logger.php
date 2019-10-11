@@ -1,11 +1,13 @@
 <?php
 
-namespace Mini\Core;
+namespace Mini\Core\Api;
+
+use Mini\Core\Service;
 
 /**
  * @author Patrick van Bergen
  */
-class Logger
+class Logger extends Service
 {
     /** @var string */
     protected $baseDir;

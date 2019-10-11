@@ -2,15 +2,14 @@
 
 namespace Mini\Backend\Block;
 
+use Mini\Core\Api\Link;
 use Mini\Core\Block;
-use Mini\Core\Link;
 
 /**
  * @author Patrick van Bergen
  */
 class Menu extends Block
 {
-
     /**
      * @param string[] $childBlocks
      * @return string

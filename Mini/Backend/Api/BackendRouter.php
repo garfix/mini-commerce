@@ -4,7 +4,7 @@ namespace Mini\Backend\Api;
 
 use Mini\Core\Context;
 use Mini\Core\Router;
-use Mini\Dashboard\Controller\Backend\View;
+use Mini\Dashboard\Controller\Backend\Dashboard;
 
 /**
  * @author Patrick van Bergen
@@ -31,6 +31,6 @@ class BackendRouter extends Router
 
         }
 
-        return new View();
+        return new Dashboard();
     }
 }

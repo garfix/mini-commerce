@@ -2,7 +2,7 @@
 
 namespace Mini\Product\Controller\Product;
 
-use Mini\Core\PageBuilder;
+use Mini\Core\Api\PageBuilder;
 use Mini\Core\RequestHandler;
 use Mini\Core\Response;
 use Mini\Product\Block\ProductMain;

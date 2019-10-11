@@ -2,20 +2,20 @@
 
 namespace Mini\Dashboard\Controller\Backend;
 
-use Mini\Core\PageBuilder;
+use Mini\Core\Api\PageBuilder;
 use Mini\Backend\Block\BackendShell;
 use Mini\Core\RequestHandler;
 use Mini\Core\Response;
-use Mini\Dashboard\Block\Backend\Dashboard;
+use Mini\Dashboard\Block\Backend\Dashboard as DashboardBlock;
 
 /**
  * @author Patrick van Bergen
  */
-class View extends RequestHandler
+class Dashboard extends RequestHandler
 {
 
     public function createResponse(): Response
     {
-        return new Response([], PageBuilder::resolve()->buildPage(new BackendShell(Dashboard::resolve())));
+        return new Response([], PageBuilder::resolve()->buildPage(new BackendShell(DashboardBlock::resolve())));
     }
 }
