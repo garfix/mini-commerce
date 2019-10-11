@@ -3,7 +3,7 @@
 use Mini\Core\BlockResolver;
 use Mini\Core\Context;
 use Mini\Core\Db;
-use Mini\Core\Logger;
+use Mini\Core\Api\Logger;
 use Mini\Core\ModuleUpdater;
 use Mini\Core\Request;
 use Mini\Core\ServiceResolver;
@@ -32,7 +32,7 @@ Context::setCurrentContext(new Context(
     $modules,
     new Request($_SERVER, $_GET, $_POST),
     new Db($environment['db']['dbName'], $environment['db']['dbHost'], $environment['db']['username'], $environment['db']['password']),
-    new Logger(__DIR__ . "/../log")
+    new Logger()
 ));
 
 $updater = new ModuleUpdater();
