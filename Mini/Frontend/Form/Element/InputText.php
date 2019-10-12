@@ -7,6 +7,13 @@ namespace Mini\Frontend\Form\Element;
  */
 class InputText extends FormElement
 {
+    /**
+     * @return void
+     */
+    public function renderStyleTag()
+    {
+
+    }
 
     /**
      * @param string[] $childBlocks

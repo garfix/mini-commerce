@@ -9,6 +9,10 @@ use Mini\Core\Block;
  */
 class FrontendShell extends Block
 {
+    public function renderStyleTag()
+    {
+    }
+
     public function render()
     { ?>
 

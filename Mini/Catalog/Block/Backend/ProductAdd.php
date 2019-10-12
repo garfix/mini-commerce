@@ -13,6 +13,10 @@ use Mini\Frontend\Form\FormSection;
  */
 class ProductAdd extends Block
 {
+    public function renderStyleTag()
+    {
+    }
+
     public function render()
     {
         $form = Form::resolve();

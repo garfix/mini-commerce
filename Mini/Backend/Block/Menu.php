@@ -10,6 +10,21 @@ use Mini\Core\Block;
  */
 class Menu extends Block
 {
+    public function renderStyleTag()
+    {
+        ?>
+        <style>
+            .menu {
+                position: absolute;
+                width: 200px;
+            }
+            .menu-item {
+                background-color: lightblue;
+            }
+        </style>
+        <?php
+    }
+
     /**
      * @param string[] $childBlocks
      * @return string
@@ -17,7 +32,10 @@ class Menu extends Block
     public function render()
     {
         ?>
-        <a href="<?= Link::resolve()->create('page=catalog/product/add') ?>">Add product</a>
+        <div class="menu">
+            <div class="menu-item"><a href="<?= Link::resolve()->create('page=/') ?>">Home</a></div>
+            <div class="menu-item"><a href="<?= Link::resolve()->create('page=catalog/product/all') ?>">Products</a></div>
+        </div>
         <?php
     }
 }

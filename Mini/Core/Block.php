@@ -14,14 +14,15 @@ abstract class Block
 
     public function __construct(Block $inner = null)
     {
+        // share state with wrapped block
         if ($inner) {
             foreach ($inner as $key => $value) {
                 if ($key === 'innerBlock') continue;
                 $this->$key = &$inner->$key;
             }
-        }
 
-        $this->innerBlock = $inner;
+            $this->innerBlock = $inner;
+        }
     }
 
     /**
@@ -31,6 +32,11 @@ abstract class Block
     {
         return Context::getBlockResolver()->resolveBlock(get_called_class());
     }
+
+    /**
+     * @return void
+     */
+    public abstract function renderStyleTag();
 
     /**
      * @return void

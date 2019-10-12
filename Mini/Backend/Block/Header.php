@@ -9,10 +9,14 @@ use Mini\Core\Block;
  */
 class Header extends Block
 {
+    public function renderStyleTag()
+    {
+    }
+
     public function render()
     {
         ?>
-        header
+
         <?php
     }
 }

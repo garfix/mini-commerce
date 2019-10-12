@@ -19,6 +19,14 @@ class FormSection extends Block
     }
 
     /**
+     * @return void
+     */
+    public function renderStyleTag()
+    {
+
+    }
+
+    /**
      * @param string[] $childBlocks
      * @return string
      */

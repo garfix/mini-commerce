@@ -28,8 +28,15 @@ class Form extends Block
     }
 
     /**
-     * @param string[] $childBlocks
-     * @return string
+     * @return void
+     */
+    public function renderStyleTag()
+    {
+
+    }
+
+    /**
+     * @return void
      */
     public function render()
     {

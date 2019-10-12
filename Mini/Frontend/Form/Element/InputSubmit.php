@@ -7,6 +7,13 @@ namespace Mini\Frontend\Form\Element;
  */
 class InputSubmit extends FormElement
 {
+    /**
+     * @return void
+     */
+    public function renderStyleTag()
+    {
+
+    }
 
     /**
      * @return void

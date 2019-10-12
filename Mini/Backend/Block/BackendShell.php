@@ -9,16 +9,31 @@ use Mini\Core\Block;
  */
 class BackendShell extends Block
 {
+    public function renderStyleTag()
+    {
+        ?>
+        <style>
+            .main {
+                margin-left: 200px;
+                padding: 20px;
+            }
+            </style>
+        <?php
+    }
+
     public function render()
     { ?>
 
         <html>
         <head>
             <?php Header::resolve()->render() ?>
+             ##style##
         </head>
         <body>
         <?php Menu::resolve()->render() ?>
-        ##main##
+        <div class="main">
+            ##main##
+        </div>
         </body>
         </html>
 

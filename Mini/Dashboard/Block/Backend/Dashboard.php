@@ -9,6 +9,13 @@ use Mini\Core\Block;
  */
 class Dashboard extends Block
 {
+    /**
+     * @return void
+     */
+    public function renderStyleTag()
+    {
+
+    }
 
     /**
      * @param string[] $childBlocks

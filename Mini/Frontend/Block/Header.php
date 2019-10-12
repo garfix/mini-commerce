@@ -9,11 +9,11 @@ use Mini\Core\Block;
  */
 class Header extends Block
 {
-    /**
-     * @param string[] $childBlocks
-     * @return string
-     */
-    public function render(): string
+    public function renderStyleTag()
+    {
+    }
+
+    public function render()
     {
         return 'header';
     }

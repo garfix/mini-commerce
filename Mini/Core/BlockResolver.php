@@ -35,6 +35,14 @@ class BlockResolver
         }
     }
 
+    /**
+     * @return Block[]
+     */
+    public function getResolvedBlocks(): array
+    {
+        return $this->resolvedBlocks;
+    }
+
     protected function getOuterBlock($blockClass)
     {
         $block = new $blockClass();

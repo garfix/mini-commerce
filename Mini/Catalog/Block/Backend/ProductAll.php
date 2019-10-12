@@ -2,6 +2,7 @@
 
 namespace Mini\Catalog\Block\Backend;
 
+use Mini\Backend\Block\ButtonLink;
 use Mini\Core\Api\Link;
 use Mini\Core\Block;
 use Mini\Core\Context;
@@ -11,6 +12,9 @@ use Mini\Core\Context;
  */
 class ProductAll extends Block
 {
+    public function renderStyleTag()
+    {
+    }
 
     /**
      * @return void
@@ -20,6 +24,8 @@ class ProductAll extends Block
         $productIds = Context::getDb()->getEntityIds('product');
 
         ?>
+
+        <?php ButtonLink::resolve()->setLabel('Add product')->setLink(Link::resolve()->create('page=catalog/product/add'))->render() ?>
 
         <?php foreach ($productIds as $productId) : ?>
             <div>

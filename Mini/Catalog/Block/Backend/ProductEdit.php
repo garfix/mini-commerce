@@ -15,6 +15,10 @@ use Mini\Frontend\Form\FormSection;
  */
 class ProductEdit extends Block
 {
+    public function renderStyleTag()
+    {
+    }
+
     public function render()
     {
         $nameValue = Context::getDb()->getAttributeValue('product', ProductPageContext::getProductId(), 'name');

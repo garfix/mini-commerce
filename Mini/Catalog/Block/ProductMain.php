@@ -9,16 +9,15 @@ use Mini\Core\Block;
  */
 class ProductMain extends Block
 {
-    public function getChildren(): array
+    /**
+     * @return void
+     */
+    public function renderStyleTag()
     {
-        return [
-            PriceBlock::class
-        ];
     }
 
     /**
-     * @param string[] $childBlocks
-     * @return string
+     * @return void
      */
     public function render()
     {

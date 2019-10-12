@@ -14,6 +14,13 @@ class PriceBlock extends Block
     protected $hidden = 'hidden';
 
     /**
+     * @return void
+     */
+    public function renderStyleTag()
+    {
+    }
+
+    /**
      * @param string[] $childBlocks
      * @return string
      */

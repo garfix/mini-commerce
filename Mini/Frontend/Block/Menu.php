@@ -9,7 +9,11 @@ use Mini\Core\Block;
  */
 class Menu extends Block
 {
-    public function render(): string
+    public function renderStyleTag()
+    {
+    }
+
+    public function render()
     {
         return 'menu';
     }
