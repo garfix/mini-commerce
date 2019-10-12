@@ -2,18 +2,20 @@
 
 namespace Mini\Core;
 
+use PDO;
+
 /**
  * @author Patrick van Bergen
  */
 class Db
 {
-    /** @var  \PDO */
+    /** @var  PDO */
     protected $pdo;
 
     public function __construct($dbName, $dbHost, $username, $password)
     {
-        $this->pdo = new \PDO("mysql:dbname={$dbName};host={$dbHost}", $username, $password, [
-            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
+        $this->pdo = new PDO("mysql:dbname={$dbName};host={$dbHost}", $username, $password, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ]);
     }
 
@@ -87,6 +89,14 @@ class Db
             $entityId,
             $value
         ]);
+    }
+
+    public function getEntityIds(string $entityType): array
+    {
+        $query = "SELECT entity_id FROM {$entityType}";
+        $st = $this->pdo->prepare($query);
+        $st->execute([]);
+        return $st->fetchAll(PDO::FETCH_COLUMN);
     }
 
     public function getAttributeValues(string $entityType, string $attributeCode): array

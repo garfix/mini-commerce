@@ -11,6 +11,7 @@ abstract class FormElement extends Block
 {
     protected $label = 'Label';
     protected $name = 'name';
+    protected $value = '';
 
     public function setLabel(string $label)
     {
@@ -20,5 +21,10 @@ abstract class FormElement extends Block
     public function setName(string $name)
     {
         $this->name = $name;
+    }
+
+    public function setValue(string $value)
+    {
+        $this->value = $value;
     }
 }
