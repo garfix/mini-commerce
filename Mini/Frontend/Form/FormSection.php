@@ -25,11 +25,13 @@ class FormSection extends Block
     public function render()
     {
         ?>
-        <form>
+        <section>
             <?php foreach ($this->elements as $element): ?>
+                <div>
                 <?= $element->render() ?>
+                </div>
             <?php endforeach; ?>
-        </form>
+        </section>
         <?php
     }
 }

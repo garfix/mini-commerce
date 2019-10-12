@@ -17,7 +17,7 @@ class InputText extends FormElement
         ?>
         <label>
             <?= htmlspecialchars($this->label) ?>:
-            <input type="text">
+            <input type="text" name="<?= htmlspecialchars($this->name) ?>">
         </label>
         <?php
     }

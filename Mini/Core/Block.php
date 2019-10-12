@@ -33,8 +33,7 @@ abstract class Block
     }
 
     /**
-     * @param string[] $childBlocks
-     * @return string
+     * @return void
      */
     public abstract function render();
 }

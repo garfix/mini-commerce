@@ -9,9 +9,6 @@ use Mini\Core\Block;
  */
 class Header extends Block
 {
-    /**
-     * @param string[] $childBlocks
-     */
     public function render()
     {
         ?>

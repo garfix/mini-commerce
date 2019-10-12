@@ -10,9 +10,15 @@ use Mini\Core\Block;
 abstract class FormElement extends Block
 {
     protected $label = 'Label';
+    protected $name = 'name';
 
-    public function setLabel($label)
+    public function setLabel(string $label)
     {
         $this->label = $label;
+    }
+
+    public function setName(string $name)
+    {
+        $this->name = $name;
     }
 }
