@@ -5,6 +5,8 @@ namespace SomeCompany\SomeModule;
 use Mini\Core\BasicModule;
 use Mini\Catalog\Block\PriceBlock;
 use Mini\Catalog\Api\FinalPriceService;
+use Mini\Frontend\Form\Element\InputText;
+use SomeCompany\SomeModule\Block\InputTextWrapper;
 use SomeCompany\SomeModule\Block\SomePriceBlock;
 use SomeCompany\SomeModule\Service\FinalPriceServiceWrapper;
 
@@ -21,7 +23,8 @@ class Module extends BasicModule
     public function getBlockWrappers(): array
     {
         return [
-            PriceBlock::class => SomePriceBlock::class
+            PriceBlock::class => SomePriceBlock::class,
+            InputText::class => InputTextWrapper::class,
         ];
     }
 

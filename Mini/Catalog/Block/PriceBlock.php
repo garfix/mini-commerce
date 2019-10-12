@@ -11,6 +11,8 @@ use Mini\Catalog\ProductPageContext;
  */
 class PriceBlock extends Block
 {
+    protected $hidden = 'hidden';
+
     /**
      * @param string[] $childBlocks
      * @return string
