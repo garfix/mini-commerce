@@ -3,6 +3,10 @@
 - Mini queries to the database
 - Wrapping blocks
 
-## Developer
+## Service
 
-- A service should not have state
+Cannot have state.
+
+## Block
+
+Can have state.

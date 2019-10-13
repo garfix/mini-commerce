@@ -22,6 +22,7 @@ class ProductEdit extends Block
     public function render()
     {
         $nameValue = Context::getDb()->getAttributeValue('product', ProductPageContext::getProductId(), 'name');
+        $priceValue = Context::getDb()->getAttributeValue('product', ProductPageContext::getProductId(), 'price');
 
         $form = Form::resolve();
 
@@ -30,6 +31,10 @@ class ProductEdit extends Block
                 $name->setLabel("Name");
                 $name->setName("name");
                 $name->setValue($nameValue);
+            $section->add($price = InputText::resolve());
+                $name->setLabel("Price");
+                $name->setName("price");
+                $name->setValue($priceValue);
             $section->add($submit = InputSubmit::resolve());
                 $submit->setLabel('Save');
 

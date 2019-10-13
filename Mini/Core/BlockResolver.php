@@ -28,11 +28,7 @@ class BlockResolver
 
     public function resolveBlock(string $blockClass)
     {
-        if (array_key_exists($blockClass, $this->resolvedBlocks)) {
-            return $this->resolvedBlocks[$blockClass];
-        } else {
-            return $this->getOuterBlock($blockClass);
-        }
+        return $this->getOuterBlock($blockClass);
     }
 
     /**
