@@ -18,28 +18,32 @@ class ModuleUpdater
     {
         foreach (Context::getModules() as $module) {
 
-            $codeVersion = $module->getVersion();
-            if (!$codeVersion) {
-                return;
-            }
-
             $moduleId = Context::getDb()->getAttributeEntityId('module', 'name', $module->getFrontName());
             if (!$moduleId) {
                 $moduleId = Context::getDb()->createEntity('module');
                 Context::getDb()->setAttribute('module', $moduleId, 'name', $module->getFrontName());
             }
 
-            $version = Context::getDb()->getAttributeValue('module', $moduleId, 'version');
-            if (!$version) {
-                $version = 0;
+            $storedVersion = Context::getDb()->getAttributeValue('module', $moduleId, 'version');
+            if (!$storedVersion) {
+                $storedVersion = 0;
             }
 
-            while ($version < $codeVersion) {
-                $version++;
-                $class = $module->completeClassname('Setup\\Setup' . $version);
-                $setup = new $class();
-                $setup->execute();
-                Context::getDb()->setAttribute('module', $moduleId, 'version', $version);
+            $codeVersion = 0;
+            // go through all Setup classes
+            while (true) {
+                $codeVersion++;
+                $class = $module->completeClassname('Setup\\Setup' . $codeVersion);
+                if (class_exists($class)) {
+                    if ($codeVersion > $storedVersion) {
+                        $setup = new $class();
+                        $setup->execute();
+                        $storedVersion = $codeVersion;
+                        Context::getDb()->setAttribute('module', $moduleId, 'version', $storedVersion);
+                    }
+                } else {
+                    break;
+                }
             }
         }
     }

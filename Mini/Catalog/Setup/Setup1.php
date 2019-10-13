@@ -3,11 +3,12 @@
 namespace Mini\Catalog\Setup;
 
 use Mini\Core\Context;
+use Mini\Core\Setup;
 
 /**
  * @author Patrick van Bergen
  */
-class Setup1
+class Setup1 extends Setup
 {
     public function execute()
     {

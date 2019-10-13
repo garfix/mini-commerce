@@ -7,11 +7,6 @@ namespace Mini\Core;
  */
 abstract class BasicModule
 {
-    public function getVersion()
-    {
-        return null;
-    }
-
     public abstract function getFrontName();
 
     /**

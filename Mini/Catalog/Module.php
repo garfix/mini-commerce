@@ -9,11 +9,6 @@ use Mini\Core\BasicModule;
  */
 class Module extends BasicModule
 {
-    public function getVersion()
-    {
-        return 1;
-    }
-
     public function getFrontName()
     {
         return 'catalog';

@@ -9,11 +9,6 @@ use Mini\Frontend\Api\FrontendRouter;
  */
 class Module extends BasicModule
 {
-    public function getVersion()
-    {
-        return 2;
-    }
-
     public function getFrontName()
     {
         return 'core';
