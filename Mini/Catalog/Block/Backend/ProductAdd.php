@@ -31,6 +31,6 @@ class ProductAdd extends Block
             $section->add($submit = InputSubmit::resolve());
                 $submit->setLabel('Save');
 
-        echo $form->render();
+        $form->render();
     }
 }

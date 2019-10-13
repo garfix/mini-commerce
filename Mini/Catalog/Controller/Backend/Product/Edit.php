@@ -26,8 +26,10 @@ class Edit extends RequestHandler
 
         if ($post = Context::getRequest()->getPost()) {
             $name = $post['name'];
+            $price = $post['price'];
 
             ProductSaverService::resolve()->storeAttribute($productId, 'name', $name);
+            ProductSaverService::resolve()->storeAttribute($productId, 'price', $price);
             return new Response(["Location: " . Link::resolve()->create('page=catalog/product/all')], "");
         }
 

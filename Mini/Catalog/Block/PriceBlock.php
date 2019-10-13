@@ -30,6 +30,6 @@ class PriceBlock extends Block
 
         $finalPrice = FinalPriceService::resolve()->getFinalPrice($productId);
 
-        echo '[product id: ' . $productId . '; price: ' . $finalPrice  . ']';
+        echo '<div class="price">[product id: ' . $productId . '; price: ' . $finalPrice  . ']</div>';
     }
 }

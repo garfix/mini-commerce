@@ -19,6 +19,7 @@ class FrontendShell extends Block
         <html>
             <head>
             <?php Header::resolve()->render() ?>
+                ##style##
             </head>
             <body>
                 <?php Menu::resolve()->render() ?>

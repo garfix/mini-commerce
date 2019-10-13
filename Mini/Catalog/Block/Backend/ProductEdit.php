@@ -32,12 +32,12 @@ class ProductEdit extends Block
                 $name->setName("name");
                 $name->setValue($nameValue);
             $section->add($price = InputText::resolve());
-                $name->setLabel("Price");
-                $name->setName("price");
-                $name->setValue($priceValue);
+                $price->setLabel("Price");
+                $price->setName("price");
+                $price->setValue($priceValue);
             $section->add($submit = InputSubmit::resolve());
                 $submit->setLabel('Save');
 
-        echo $form->render();
+        $form->render();
     }
 }

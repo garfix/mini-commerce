@@ -26,7 +26,6 @@ class PageBuilder extends Service
     {
         ob_start();
 
-#todo these are only the wrapped blocks, not the inner blocks
         foreach (Context::getBlockResolver()->getResolvedBlocks() as $block) {
             $block->renderStyleTag();
         }

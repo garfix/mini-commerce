@@ -32,6 +32,7 @@ class ProductAll extends Block
                 <a href="<?= Link::resolve()->create('page=catalog/product/edit&id=' . $productId) ?>">
                 <?= Context::getDb()->getAttributeValue('product', $productId, 'name') ?>
                 </a>
+                <?= Context::getDb()->getAttributeValue('product', $productId, 'price') ?>
             </div>
         <?php endforeach ?>
 

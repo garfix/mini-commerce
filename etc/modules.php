@@ -8,4 +8,6 @@ return [
     'Mini\Dashboard' => true,
     'SomeCompany\SomeModule' => true,
     'SomeOtherCompany\SomeOtherModule' => true,
+
+    'ChimpCommerce\ChimpTheme' => true,
 ];

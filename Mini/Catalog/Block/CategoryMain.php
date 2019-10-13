@@ -9,6 +9,12 @@ use Mini\Core\Block;
  */
 class CategoryMain extends Block
 {
+    /**
+     * @return void
+     */
+    public function renderStyleTag()
+    {
+    }
 
     /**
      * @param string[] $childBlocks
