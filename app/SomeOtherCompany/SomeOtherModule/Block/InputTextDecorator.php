@@ -7,7 +7,7 @@ use Mini\Frontend\Form\Element\InputText;
 /**
  * @author Patrick van Bergen
  */
-class InputTextWrapper extends InputText
+class InputTextDecorator extends InputText
 {
     public function render()
     {

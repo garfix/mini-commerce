@@ -1,13 +1,13 @@
 <?php
 
-namespace SomeOtherCompany\SomeOtherModule\Service;
+namespace SomeCompany\SomeModule\Service;
 
 use Mini\Catalog\Api\FinalPriceService;
 
 /**
  * @author Patrick van Bergen
  */
-class FinalPriceServiceWrapper extends FinalPriceService
+class FinalPriceServiceDecorator extends FinalPriceService
 {
     /**
      * @var FinalPriceService
@@ -21,6 +21,6 @@ class FinalPriceServiceWrapper extends FinalPriceService
 
     public function getFinalPrice(int $productId)
     {
-        return $this->calculatePrice($this->innerModel->getFinalPrice($productId) + 10);
+        return $this->innerModel->getFinalPrice($productId) + 20;
     }
 }

@@ -1,9 +1,10 @@
 # todo
 
-- wrapper -> decorator
+- handle query errors
+- translations
 - determine context dynamically
 - different designs
-- the order of the block wrappers must be determinable
+- the order of the decorators must be determinable
 - prices, names, in multiple store views
 - select all prices, names in a list: inheritance, fallback?
 - calculate final prices

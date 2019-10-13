@@ -8,7 +8,7 @@ namespace Mini\Core;
 class ServiceResolver
 {
     /** @var string[][] */
-    protected $wrappers = [];
+    protected $decorators = [];
 
     /** @var Service[] */
     protected $resolvedServices = [];
@@ -20,8 +20,8 @@ class ServiceResolver
     public function __construct(array $modules)
     {
         foreach ($modules as $module) {
-            foreach ($module->getServiceWrappers() as $original => $wrapper) {
-                $this->wrappers[$original][] = $wrapper;
+            foreach ($module->getServiceDecorators() as $original => $decorator) {
+                $this->decorators[$original][] = $decorator;
             }
         }
     }
@@ -39,9 +39,9 @@ class ServiceResolver
     {
         $service = new $serviceClass();
 
-        if (array_key_exists($serviceClass, $this->wrappers)) {
-            foreach ($this->wrappers[$serviceClass] as $wrapper) {
-                $service = new $wrapper($service);
+        if (array_key_exists($serviceClass, $this->decorators)) {
+            foreach ($this->decorators[$serviceClass] as $decorator) {
+                $service = new $decorator($service);
             }
         }
 

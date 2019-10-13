@@ -8,7 +8,7 @@ namespace Mini\Core;
 class BlockResolver
 {
     /** @var string[][] */
-    protected $wrappers = [];
+    protected $decorators = [];
 
     /** @var Block[] */
     protected $resolvedBlocks = [];
@@ -20,8 +20,8 @@ class BlockResolver
     public function __construct(array $modules)
     {
         foreach ($modules as $module) {
-            foreach ($module->getBlockWrappers() as $original => $wrapper) {
-                $this->wrappers[$original][] = $wrapper;
+            foreach ($module->getBlockDecorators() as $original => $decorator) {
+                $this->decorators[$original][] = $decorator;
             }
         }
     }
@@ -43,9 +43,9 @@ class BlockResolver
     {
         $block = new $blockClass();
 
-        if (array_key_exists($blockClass, $this->wrappers)) {
-            foreach ($this->wrappers[$blockClass] as $wrapper) {
-                $block = new $wrapper($block);
+        if (array_key_exists($blockClass, $this->decorators)) {
+            foreach ($this->decorators[$blockClass] as $decorator) {
+                $block = new $decorator($block);
             }
         }
 

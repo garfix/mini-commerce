@@ -6,9 +6,9 @@ use Mini\Core\BasicModule;
 use Mini\Catalog\Block\PriceBlock;
 use Mini\Catalog\Api\FinalPriceService;
 use Mini\Frontend\Form\Element\InputText;
-use SomeCompany\SomeModule\Block\InputTextWrapper;
+use SomeCompany\SomeModule\Block\InputTextDecorator;
 use SomeCompany\SomeModule\Block\SomePriceBlock;
-use SomeCompany\SomeModule\Service\FinalPriceServiceWrapper;
+use SomeCompany\SomeModule\Service\FinalPriceServiceDecorator;
 
 /**
  * @author Patrick van Bergen
@@ -20,18 +20,18 @@ class Module extends BasicModule
         return 'some';
     }
 
-    public function getBlockWrappers(): array
+    public function getBlockDecorators(): array
     {
         return [
             PriceBlock::class => SomePriceBlock::class,
-            InputText::class => InputTextWrapper::class,
+            InputText::class => InputTextDecorator::class,
         ];
     }
 
-    public function getServiceWrappers(): array
+    public function getServiceDecorators(): array
     {
         return [
-            FinalPriceService::class => FinalPriceServiceWrapper::class
+            FinalPriceService::class => FinalPriceServiceDecorator::class
         ];
     }
 }

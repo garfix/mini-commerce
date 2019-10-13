@@ -25,7 +25,7 @@ abstract class BasicModule
     /**
      * @return []string
      */
-    public function getBlockWrappers(): array
+    public function getBlockDecorators(): array
     {
         return [];
     }
@@ -33,7 +33,7 @@ abstract class BasicModule
     /**
      * @return []string
      */
-    public function getServiceWrappers(): array
+    public function getServiceDecorators(): array
     {
         return [];
     }
