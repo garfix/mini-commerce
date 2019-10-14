@@ -36,7 +36,7 @@ This means that you cannot _load the model_. This takes away one of the major ca
 
 ## Context
 
-The system does not use dependency injection, but rather a Ambient Context to hold the system-wide dependencies of the system: DB, log, Request, etc. 
+The system does not use dependency injection, but rather an Ambient Context to hold the system-wide dependencies of the system: DB, log, Request, etc. 
 
 ## Database
 

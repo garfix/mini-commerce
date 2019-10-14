@@ -30,7 +30,7 @@ abstract class Block
      */
     public static function resolve()
     {
-        return Context::getBlockResolver()->resolveBlock(get_called_class());
+        return Context::getBlockResolver()->resolve(get_called_class());
     }
 
     /**

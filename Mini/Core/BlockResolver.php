@@ -26,7 +26,7 @@ class BlockResolver
         }
     }
 
-    public function resolveBlock(string $blockClass)
+    public function resolve(string $blockClass)
     {
         return $this->getOuterBlock($blockClass);
     }

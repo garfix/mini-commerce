@@ -12,6 +12,6 @@ abstract class Service
      */
     public static function resolve()
     {
-        return Context::getResolver()->resolveService(get_called_class());
+        return Context::getServiceResolver()->resolve(get_called_class());
     }
 }

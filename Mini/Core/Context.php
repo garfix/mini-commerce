@@ -13,7 +13,7 @@ class Context
     private static $currentContext = null;
 
     /** @var ServiceResolver */
-    protected $resolver;
+    protected $serviceResolver;
 
     /** @var BlockResolver */
     protected $blockResolver;
@@ -44,7 +44,7 @@ class Context
      * Context constructor.
      */
     public function __construct(
-        ServiceResolver $resolver,
+        ServiceResolver $serviceResolver,
         BlockResolver $blockResolver,
         array $modules,
         Request $request,
@@ -56,7 +56,7 @@ class Context
         $this->logger = $logger;
         $this->request = $request;
         $this->modules = $modules;
-        $this->resolver = $resolver;
+        $this->serviceResolver = $serviceResolver;
         $this->blockResolver = $blockResolver;
     }
 
@@ -64,9 +64,9 @@ class Context
      * @param $className
      * @return ServiceResolver
      */
-    public static function getResolver(): ServiceResolver
+    public static function getServiceResolver(): ServiceResolver
     {
-        return self::$currentContext->resolver;
+        return self::$currentContext->serviceResolver;
     }
 
     public static function getBlockResolver(): BlockResolver

@@ -26,7 +26,7 @@ class ServiceResolver
         }
     }
 
-    public function resolveService(string $serviceClass)
+    public function resolve(string $serviceClass)
     {
         if (array_key_exists($serviceClass, $this->resolvedServices)) {
             return $this->resolvedServices[$serviceClass];
