@@ -11,6 +11,7 @@ Decorators function as:
 - around plugin (and before and after plugin)
 - event handler; some event handlers only serve to modify the data of an object
 - extension
+- theme (both html and css can be changed by a decorator)
 
 ## Service
 
