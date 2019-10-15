@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'Mini\Core' => true,
-    'Mini\Catalog' => true,
-    'Mini\Frontend' => true,
-    'Mini\Backend' => true,
-    'Mini\Dashboard' => true,
-    'SomeCompany\SomeModule' => true,
-    'SomeOtherCompany\SomeOtherModule' => true,
+    \Mini\Core\Module::class => true,
+    \Mini\Catalog\Module::class => true,
+    \Mini\Frontend\Module::class => true,
+    \Mini\Backend\Module::class => true,
+    \Mini\Dashboard\Module::class => true,
+    \SomeCompany\SomeModule\Module::class => true,
+    \SomeOtherCompany\SomeOtherModule\Module::class => true,
 
-    'ChimpCommerce\ChimpTheme' => true,
+    \ChimpCommerce\ChimpTheme\Module::class => true,
 ];

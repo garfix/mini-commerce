@@ -24,7 +24,7 @@ class Module extends BasicModule
     {
         return [
             PriceBlock::class => SomePriceBlock::class,
-            InputText::class => InputTextDecorator::class,
+            //InputText::class => InputTextDecorator::class,
         ];
     }
 

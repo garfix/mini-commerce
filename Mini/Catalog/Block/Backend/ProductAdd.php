@@ -25,8 +25,9 @@ class ProductAdd extends Block
             $section->add($name = InputText::resolve());
                 $name->setLabel("Name");
                 $name->setName("name");
+                $name->setRequired();
             $section->add($price = InputText::resolve());
-                $price->setLabel("Price");
+                $price->setLabel(t("Price"));
                 $price->setName("price");
             $section->add($submit = InputSubmit::resolve());
                 $submit->setLabel('Save');

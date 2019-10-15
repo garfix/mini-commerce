@@ -30,6 +30,9 @@ class Context
     /** @var Logger */
     protected $logger;
 
+    /** @var Translator */
+    protected $translator;
+
     public static function setCurrentContext(Context $context = null)
     {
         self::$currentContext = $context;
@@ -49,7 +52,8 @@ class Context
         array $modules,
         Request $request,
         Db $db,
-        Logger $logger
+        Logger $logger,
+        Translator $translator
     )
     {
         $this->db = $db;
@@ -58,6 +62,7 @@ class Context
         $this->modules = $modules;
         $this->serviceResolver = $serviceResolver;
         $this->blockResolver = $blockResolver;
+        $this->translator = $translator;
     }
 
     /**
@@ -95,5 +100,10 @@ class Context
     public static function getRequest(): Request
     {
         return self::$currentContext->request;
+    }
+
+    public static function getTranslator(): Translator
+    {
+        return self::$currentContext->translator;
     }
 }

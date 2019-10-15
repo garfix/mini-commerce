@@ -12,6 +12,7 @@ abstract class FormElement extends Block
     protected $label = 'Label';
     protected $name = 'name';
     protected $value = '';
+    protected $required = false;
 
     public function setLabel(string $label)
     {
@@ -26,5 +27,10 @@ abstract class FormElement extends Block
     public function setValue(string $value)
     {
         $this->value = $value;
+    }
+
+    public function setRequired(bool $required = true)
+    {
+        $this->required = $required;
     }
 }
