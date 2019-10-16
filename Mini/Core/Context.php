@@ -30,8 +30,8 @@ class Context
     /** @var Logger */
     protected $logger;
 
-    /** @var Translator */
-    protected $translator;
+    /** @var Site */
+    protected $site;
 
     public static function setCurrentContext(Context $context = null)
     {
@@ -53,7 +53,7 @@ class Context
         Request $request,
         Db $db,
         Logger $logger,
-        Translator $translator
+        Site $translator
     )
     {
         $this->db = $db;
@@ -62,7 +62,7 @@ class Context
         $this->modules = $modules;
         $this->serviceResolver = $serviceResolver;
         $this->blockResolver = $blockResolver;
-        $this->translator = $translator;
+        $this->site = $translator;
     }
 
     /**
@@ -102,8 +102,8 @@ class Context
         return self::$currentContext->request;
     }
 
-    public static function getTranslator(): Translator
+    public static function getSite(): Site
     {
-        return self::$currentContext->translator;
+        return self::$currentContext->site;
     }
 }

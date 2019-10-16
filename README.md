@@ -1,6 +1,6 @@
 # Mini Commerce
 
-This application is a proof-of-concept of some of the ideas I have about how to create an e-commerce system that both fast to execute and easy to develop for. It is a bit of a reaction against the heaviness of Magento 2. Some of these ideas may be considered controversial. 
+This application is a proof-of-concept of some of the ideas I have about how to create an e-commerce system that both fast to execute and easy to develop for. It is a bit of a reaction against the heaviness of Magento 2. Some of these ideas are controversial. 
 
 ## Services and Blocks
 
@@ -53,3 +53,7 @@ Each module and extension has a module class. This class provides access to the 
 ## Routers and Request Handler
 
 The module may specify a router. A router is a class that determines what to do with a URL. It picks a request handler that builds the response. Request handlers reside in the Controller directory.
+
+## Translation
+
+I use class constants to specify translations. This way the translations do not need to be loaded; they are there at compilation time. Also, since a source is a constant, the full power of the IDE can be unleashed on it to see where the it is used; and which translations are present.

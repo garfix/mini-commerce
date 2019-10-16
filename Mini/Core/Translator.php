@@ -7,8 +7,11 @@ namespace Mini\Core;
  */
 class Translator
 {
-    public function translate(string $text)
-    {
-        return $text;
+    /**
+     * @return $this
+     */
+    public static function resolve() {
+
+        return Context::getSite()->getTranslator(static::class);
     }
 }

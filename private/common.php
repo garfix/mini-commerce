@@ -7,7 +7,7 @@ use Mini\Core\Api\Logger;
 use Mini\Core\ModuleUpdater;
 use Mini\Core\Request;
 use Mini\Core\ServiceResolver;
-use Mini\Core\Translator;
+use Mini\Core\Site;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -32,12 +32,12 @@ Context::setCurrentContext(new Context(
     new Request($_SERVER, $_GET, $_POST),
     new Db($environment['db']['dbName'], $environment['db']['dbHost'], $environment['db']['username'], $environment['db']['password']),
     new Logger(),
-    new Translator()
+    new Site('de')
 ));
 
 function t($text): string
 {
-    return Context::getTranslator()->translate($text);
+    return Context::getSite()->translate($text);
 }
 
 $updater = new ModuleUpdater();

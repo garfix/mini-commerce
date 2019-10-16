@@ -2,6 +2,7 @@
 
 namespace Mini\Catalog\Block\Backend;
 
+use Mini\Catalog\i18n\CatalogTranslator;
 use Mini\Catalog\ProductPageContext;
 use Mini\Core\Block;
 use Mini\Core\Context;
@@ -21,6 +22,8 @@ class ProductEdit extends Block
 
     public function render()
     {
+        $t = CatalogTranslator::resolve();
+
         $nameValue = Context::getDb()->getAttributeValue('product', ProductPageContext::getProductId(), 'name');
         $priceValue = Context::getDb()->getAttributeValue('product', ProductPageContext::getProductId(), 'price');
 
@@ -28,12 +31,12 @@ class ProductEdit extends Block
 
         $form->add($section = FormSection::resolve());
             $section->add($name = InputText::resolve());
-                $name->setLabel("Name");
-                $name->setName("name");
+                $name->setLabel($t::name);
+                $name->setName("Name");
                 $name->setValue($nameValue);
             $section->add($price = InputText::resolve());
-                $price->setLabel("Price");
-                $price->setName("price");
+                $price->setLabel($t::price);
+                $price->setName("Price");
                 $price->setValue($priceValue);
             $section->add($submit = InputSubmit::resolve());
                 $submit->setLabel('Save');

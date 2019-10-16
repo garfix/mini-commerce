@@ -2,6 +2,7 @@
 
 namespace Mini\Catalog\Block\Backend;
 
+use Mini\Catalog\i18n\CatalogTranslator;
 use Mini\Core\Block;
 use Mini\Frontend\Form\Element\InputSubmit;
 use Mini\Frontend\Form\Element\InputText;
@@ -19,15 +20,17 @@ class ProductAdd extends Block
 
     public function render()
     {
+        $t = CatalogTranslator::resolve();
+
         $form = Form::resolve();
 
         $form->add($section = FormSection::resolve());
             $section->add($name = InputText::resolve());
                 $name->setLabel("Name");
-                $name->setName("name");
+                $name->setName($t::name);
                 $name->setRequired();
             $section->add($price = InputText::resolve());
-                $price->setLabel(t("Price"));
+                $price->setLabel($t::price);
                 $price->setName("price");
             $section->add($submit = InputSubmit::resolve());
                 $submit->setLabel('Save');
