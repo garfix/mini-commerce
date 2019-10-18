@@ -1,6 +1,6 @@
 <?php
 
-namespace Mini\Catalog\i18n;
+namespace Mini\Catalog\Lang;
 
 /**
  * @author Patrick van Bergen

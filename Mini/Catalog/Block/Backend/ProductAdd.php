@@ -2,7 +2,7 @@
 
 namespace Mini\Catalog\Block\Backend;
 
-use Mini\Catalog\i18n\CatalogTranslator;
+use Mini\Catalog\Lang\CatalogTranslator;
 use Mini\Core\Block;
 use Mini\Frontend\Form\Element\InputSubmit;
 use Mini\Frontend\Form\Element\InputText;

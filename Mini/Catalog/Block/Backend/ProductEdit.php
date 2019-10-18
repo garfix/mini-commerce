@@ -2,7 +2,7 @@
 
 namespace Mini\Catalog\Block\Backend;
 
-use Mini\Catalog\i18n\CatalogTranslator;
+use Mini\Catalog\Lang\CatalogTranslator;
 use Mini\Catalog\ProductPageContext;
 use Mini\Core\Block;
 use Mini\Core\Context;
