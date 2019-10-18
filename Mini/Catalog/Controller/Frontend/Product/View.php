@@ -2,11 +2,11 @@
 
 namespace Mini\Catalog\Controller\Frontend\Product;
 
+use Mini\Catalog\Block\Frontend\ProductMain;
 use Mini\Core\Api\PageBuilder;
 use Mini\Core\RequestHandler;
 use Mini\Core\Response;
 use Mini\Frontend\Block\FrontendShell;
-use Mini\Catalog\Block\ProductMain;
 use Mini\Catalog\ProductPageContext;
 
 /**

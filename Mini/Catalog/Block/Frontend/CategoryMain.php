@@ -1,13 +1,13 @@
 <?php
 
-namespace Mini\Catalog\Block;
+namespace Mini\Catalog\Block\Frontend;
 
 use Mini\Core\Block;
 
 /**
  * @author Patrick van Bergen
  */
-class ProductMain extends Block
+class CategoryMain extends Block
 {
     /**
      * @return void
@@ -17,14 +17,11 @@ class ProductMain extends Block
     }
 
     /**
-     * @return void
+     * @param string[] $childBlocks
+     * @return string
      */
     public function render()
     {
-        ?>
-        [product main
-        <?php PriceBlock::resolve()->render([]) ?>
-        ]
-        <?php
+        echo 'category main';
     }
 }

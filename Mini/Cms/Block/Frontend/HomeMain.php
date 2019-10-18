@@ -1,13 +1,13 @@
 <?php
 
-namespace Mini\Catalog\Block;
+namespace Mini\Cms\Block\Frontend;
 
 use Mini\Core\Block;
 
 /**
  * @author Patrick van Bergen
  */
-class CategoryMain extends Block
+class HomeMain extends Block
 {
     /**
      * @return void
@@ -22,6 +22,7 @@ class CategoryMain extends Block
      */
     public function render()
     {
-        echo 'category main';
+        echo 'home';
     }
+
 }

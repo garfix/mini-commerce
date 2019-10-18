@@ -1,6 +1,6 @@
 <?php
 
-namespace Mini\Catalog\Block;
+namespace Mini\Catalog\Block\Frontend;
 
 use Mini\Core\Block;
 use Mini\Catalog\Api\FinalPriceService;
