@@ -42,4 +42,12 @@ abstract class Block
      * @return void
      */
     public abstract function render();
+
+    /**
+     * @return void
+     */
+    public function initializeJS()
+    {
+
+    }
 }

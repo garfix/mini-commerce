@@ -9,6 +9,8 @@ use Mini\Core\Block;
  */
 class Grid extends Block
 {
+    protected $id = null;
+
     protected $columns = [];
 
     protected $values = [];
@@ -69,6 +71,9 @@ class Grid extends Block
             .grid td {
                 border-top: 1px solid gray;
             }
+            .grid-next {
+
+            }
         </style>
         <?php
     }
@@ -78,6 +83,8 @@ class Grid extends Block
      */
     public function render()
     {
+        $tableId = $this->id ?: uniqid('table');
+
         ?>
         <table class="grid">
             <thead>
@@ -114,6 +121,23 @@ class Grid extends Block
             <?php endforeach ?>
             </tbody>
         </table>
+        <div class="grid-next">Next page</div>
+        <script src="../Mini/Catalog/js/grid.js">
+        <script>
+            (function(tableId){
+                initTable(tableId);
+            })('<?= $tableId ?>');
+        </script>
+        <?php
+    }
+
+    /**
+     * @return void
+     */
+    public function initializeJS()
+    {
+        ?>
+
         <?php
     }
 }

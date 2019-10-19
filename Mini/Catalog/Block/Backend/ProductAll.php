@@ -36,7 +36,7 @@ class ProductAll extends Block
                     'price' => Context::getDb()->getAttributeValue('product', $productId, 'price'),
             ];
             $actions[] = [
-                    'view' => GridAction::resolve()->setLabel('View')->setUrl(Link::resolve()->create('page=catalog/product/edit&id=' . $productId))
+                    GridAction::resolve()->setLabel('View')->setUrl(Link::resolve()->create('page=catalog/product/edit&id=' . $productId))
             ];
         }
 
