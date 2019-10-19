@@ -34,6 +34,7 @@ class BackendShell extends Block
         <div class="main">
             ##main##
         </div>
+        ##script##
         </body>
         </html>
 

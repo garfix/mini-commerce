@@ -29,6 +29,7 @@ class FrontendShell extends Block
                     <li><?= $i ?></li>
                 <?php endfor; ?>
                 </ul>
+                ##script##
             </body>
         </html>
 

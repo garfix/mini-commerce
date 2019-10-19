@@ -44,10 +44,10 @@ abstract class Block
     public abstract function render();
 
     /**
-     * @return void
+     * @return string[]
      */
-    public function initializeJS()
+    public function listJS()
     {
-
+        return [];
     }
 }

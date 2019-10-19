@@ -122,7 +122,6 @@ class Grid extends Block
             </tbody>
         </table>
         <div class="grid-next">Next page</div>
-        <script src="../Mini/Catalog/js/grid.js">
         <script>
             (function(tableId){
                 initTable(tableId);
@@ -132,12 +131,10 @@ class Grid extends Block
     }
 
     /**
-     * @return void
+     * @return string[]
      */
-    public function initializeJS()
+    public function listJS()
     {
-        ?>
-
-        <?php
+        return ['Mini/Backend/js/grid.js'];
     }
 }

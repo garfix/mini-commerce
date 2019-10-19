@@ -2,9 +2,11 @@
 
 namespace Mini\Core\Api;
 
+use Mini\Backend\Block\BackendShell;
 use Mini\Core\Block;
 use Mini\Core\Context;
 use Mini\Core\Service;
+use ReflectionClass;
 
 /**
  * @author Patrick van Bergen
@@ -13,12 +15,15 @@ class PageBuilder extends Service
 {
     public function buildPage(Block $shell, Block $main): string
     {
+        $isBackend = $shell instanceof BackendShell;
         $shellContents = $this->getContents($shell);
         $mainContents = $this->getContents($main);
         $style = $this->getStyle();
+        $scripts = $this->getScripts($isBackend);
 
         $contents = preg_replace('/##main##/', $mainContents, $shellContents);
         $contents = preg_replace('/##style##/', $style, $contents);
+        $contents = preg_replace('/##script##/', $scripts, $contents);
         return $contents;
     }
 
@@ -34,6 +39,53 @@ class PageBuilder extends Service
         ob_end_clean();
 
         return $style;
+    }
+
+    protected function getScripts(bool $isBackend)
+    {
+        $scripts = "";
+
+        $visited = [];
+
+        foreach (Context::getBlockResolver()->getResolvedBlocks() as $block) {
+            foreach ($block->listJS() as $script) {
+
+                // add each script only once
+                if (array_key_exists($script, $visited)) {
+                    continue;
+                }
+                $visited[$script] = true;
+
+                // backend and frontend scripts are located elsewhere
+                if ($isBackend) {
+                    $publicPath = __DIR__ . '/../../../private/' . $script;
+                } else {
+                    $publicPath = __DIR__ . '/../../../public/' . $script;
+                }
+
+                // quick check if public location exists
+                if (!file_exists($publicPath)) {
+
+                    // symlink to public location
+                    $privatePath = null;
+                    $reflection = new ReflectionClass($block);
+                    if (preg_match('#^(.*)/Block/#', $reflection->getFileName(), $matches)) {
+                        $privatePath = $matches[1] . '/js/' . basename($script);
+                        $publicDir = dirname($publicPath);
+
+                        if (!file_exists($publicDir)) {
+                            mkdir($publicDir, 0777, true);
+                        }
+                        symlink($privatePath, $publicPath);
+                    } else {
+                        die('Javascript file resolver: block not in Block dir: ' . $reflection->getFileName());
+                    }
+                }
+                $scripts .= "<script src='$script'></script";
+            }
+        }
+
+        return $scripts;
     }
 
     protected function getContents(Block $block)

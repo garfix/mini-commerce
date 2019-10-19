@@ -1,6 +1,4 @@
-alert(1)
-
 function initTable(tableId)
 {
-
+    console.log(tableId)
 }
