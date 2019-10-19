@@ -19,11 +19,12 @@ class PageBuilder extends Service
         $shellContents = $this->getContents($shell);
         $mainContents = $this->getContents($main);
         $style = $this->getStyle();
-        $scripts = $this->getScripts($isBackend);
+        $externalScripts = $this->getExternalScripts($isBackend);
+        list($mainContents, $internalScripts) = $this->extractInternalScripts($mainContents);
 
         $contents = preg_replace('/##main##/', $mainContents, $shellContents);
         $contents = preg_replace('/##style##/', $style, $contents);
-        $contents = preg_replace('/##script##/', $scripts, $contents);
+        $contents = preg_replace('/##script##/', $externalScripts . $internalScripts, $contents);
         return $contents;
     }
 
@@ -41,11 +42,13 @@ class PageBuilder extends Service
         return $style;
     }
 
-    protected function getScripts(bool $isBackend)
+    protected function getExternalScripts(bool $isBackend)
     {
         $scripts = "";
 
         $visited = [];
+
+#todo: versioning tag
 
         foreach (Context::getBlockResolver()->getResolvedBlocks() as $block) {
             foreach ($block->listJS() as $script) {
@@ -81,7 +84,7 @@ class PageBuilder extends Service
                         die('Javascript file resolver: block not in Block dir: ' . $reflection->getFileName());
                     }
                 }
-                $scripts .= "<script src='$script'></script";
+                $scripts .= "<script src='$script'></script>";
             }
         }
 
@@ -96,5 +99,16 @@ class PageBuilder extends Service
         ob_end_clean();
 
         return $contents;
+    }
+
+    protected function extractInternalScripts($contents)
+    {
+        $scripts = '';
+        $newContents = preg_replace_callback('#<script>.*?</script>#s', function($match) use (&$scripts) {
+            $scripts .= $match[0];
+            return '';
+        }, $contents);
+
+        return [$newContents, $scripts];
     }
 }

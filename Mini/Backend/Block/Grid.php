@@ -83,9 +83,12 @@ class Grid extends Block
      */
     public function render()
     {
-        $tableId = $this->id ?: uniqid('table');
+        $gridId = $this->id ?: uniqid('grid');
 
         ?>
+        <script>
+            initGrid('<?= $gridId ?>');
+        </script>
         <table class="grid">
             <thead>
             <?php foreach ($this->columns as $id => $label): ?>
@@ -122,11 +125,6 @@ class Grid extends Block
             </tbody>
         </table>
         <div class="grid-next">Next page</div>
-        <script>
-            (function(tableId){
-                initTable(tableId);
-            })('<?= $tableId ?>');
-        </script>
         <?php
     }
 
