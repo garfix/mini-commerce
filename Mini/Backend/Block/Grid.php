@@ -2,6 +2,7 @@
 
 namespace Mini\Backend\Block;
 
+use Mini\Core\Api\Link;
 use Mini\Core\Block;
 
 /**
@@ -17,6 +18,8 @@ class Grid extends Block
 
     /** @var GridAction[] */
     protected $actions = [];
+
+    protected $pageNumber = 0;
 
     /**
      * @param array $columnNames
@@ -45,6 +48,12 @@ class Grid extends Block
     public function setActions(array $actions)
     {
         $this->actions = $actions;
+        return $this;
+    }
+
+    public function setPageNumber(int $number)
+    {
+        $this->pageNumber = $number;
         return $this;
     }
 
@@ -84,47 +93,50 @@ class Grid extends Block
     public function render()
     {
         $gridId = $this->id ?: uniqid('grid');
+        $gridUrl = Link::resolve()->create('page=backend/grid/view&class=' . urlencode(get_class($this))) . '&pageNumber=' . $this->pageNumber;
 
         ?>
-        <script>
-            initGrid('<?= $gridId ?>');
-        </script>
-        <table class="grid">
-            <thead>
-            <?php foreach ($this->columns as $id => $label): ?>
-                <td><?= htmlspecialchars($label) ?></td>
-            <?php endforeach ?>
-            </thead>
-            <tbody>
-            <?php foreach ($this->values as $rowIndex => $row): ?>
-                <?php
-                    $url = null;
-                    if (isset($this->actions[$rowIndex])) {
-                        $url = $this->actions[$rowIndex] ? reset($this->actions[$rowIndex])->getUrl() : null;
-                    } ?>
-                <tr>
-                    <?php foreach ($this->columns as $id => $label): ?>
-                    <td>
-                        <?php if ($id === 'actions'): ?>
-                            <?php if (isset($this->actions[$rowIndex])): ?>
-                                <?php foreach ($this->actions[$rowIndex] as $action): ?>
-                                    <a href="<?= $action->getUrl() ?>">
-                                        <?= htmlspecialchars($action->getLabel()) ?>
-                                    </a>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        <?php else: ?>
-                            <?php if ($url): ?><a href="<?= $url ?>"><?php endif ?>
-                            <?= isset($row[$id]) ? htmlspecialchars($row[$id]) : '' ?>
-                            <?php if ($url): ?></a><?php endif ?>
-                        <?php endif ?>
-                    </td>
-                    <?php endforeach ?>
-                </tr>
-            <?php endforeach ?>
-            </tbody>
-        </table>
-        <div class="grid-next">Next page</div>
+        <div class="grid" id="<?= $gridId ?>">
+            <script>
+                initGrid('<?= $gridId ?>', '<?= $gridUrl ?>');
+            </script>
+            <table>
+                <thead>
+                <?php foreach ($this->columns as $id => $label): ?>
+                    <td><?= htmlspecialchars($label) ?></td>
+                <?php endforeach ?>
+                </thead>
+                <tbody>
+                <?php foreach ($this->values as $rowIndex => $row): ?>
+                    <?php
+                        $url = null;
+                        if (isset($this->actions[$rowIndex])) {
+                            $url = $this->actions[$rowIndex] ? reset($this->actions[$rowIndex])->getUrl() : null;
+                        } ?>
+                    <tr>
+                        <?php foreach ($this->columns as $id => $label): ?>
+                        <td>
+                            <?php if ($id === 'actions'): ?>
+                                <?php if (isset($this->actions[$rowIndex])): ?>
+                                    <?php foreach ($this->actions[$rowIndex] as $action): ?>
+                                        <a href="<?= $action->getUrl() ?>">
+                                            <?= htmlspecialchars($action->getLabel()) ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <?php if ($url): ?><a href="<?= $url ?>"><?php endif ?>
+                                <?= isset($row[$id]) ? htmlspecialchars($row[$id]) : '' ?>
+                                <?php if ($url): ?></a><?php endif ?>
+                            <?php endif ?>
+                        </td>
+                        <?php endforeach ?>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+            <div class="grid-next">Next page</div>
+        </div>
         <?php
     }
 

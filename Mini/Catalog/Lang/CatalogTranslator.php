@@ -13,4 +13,5 @@ class CatalogTranslator extends Translator
     const name = "Name";
     const id = "ID";
     const action = "Action";
+    const addProduct = "Add product";
 }

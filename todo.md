@@ -1,5 +1,6 @@
 # todo
 
+- style can also go in render, like script and be extracted later
 - handle query errors
 - translations
 - determine context dynamically
