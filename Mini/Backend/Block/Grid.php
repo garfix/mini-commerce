@@ -16,7 +16,7 @@ class Grid extends Block
 
     protected $values = [];
 
-    /** @var GridAction[] */
+    /** @var GridAction[][] */
     protected $actions = [];
 
     protected $pageNumber = 0;
@@ -57,6 +57,31 @@ class Grid extends Block
         return $this;
     }
 
+    public function getAjaxData(): array
+    {
+        $data = [];
+
+        $data['values'] = $this->values;
+        $data['columns'] = array_keys($this->columns);
+
+        $actions = [];
+
+        foreach ($this->actions as $row) {
+            $rowActions = [];
+            foreach ($row as $action) {
+                $rowActions[] = [
+                    'label' => $action->getLabel(),
+                    'url' => $action->getUrl()
+                ];
+            }
+            $actions[] = $rowActions;
+        }
+
+        $data['actions'] = $actions;
+
+        return $data;
+    }
+
     /**
      * @return void
      */
@@ -93,7 +118,7 @@ class Grid extends Block
     public function render()
     {
         $gridId = $this->id ?: uniqid('grid');
-        $gridUrl = Link::resolve()->create('page=backend/grid/view&class=' . urlencode(get_class($this))) . '&pageNumber=' . $this->pageNumber;
+        $gridUrl = Link::resolve()->create('page=backend/grid/update&class=' . urlencode(get_class($this))) . '&pageNumber=' . $this->pageNumber;
 
         ?>
         <div class="grid" id="<?= $gridId ?>">

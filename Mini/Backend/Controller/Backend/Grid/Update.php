@@ -2,9 +2,7 @@
 
 namespace Mini\Backend\Controller\Backend\Grid;
 
-use Mini\Backend\Block\EmptyShell;
 use Mini\Backend\Block\Grid;
-use Mini\Core\Api\PageBuilder;
 use Mini\Core\Context;
 use Mini\Core\RequestHandler;
 use Mini\Core\Response;
@@ -12,7 +10,7 @@ use Mini\Core\Response;
 /**
  * @author Patrick van Bergen
  */
-class View extends RequestHandler
+class Update extends RequestHandler
 {
     public function createResponse(): Response
     {
@@ -22,8 +20,8 @@ class View extends RequestHandler
         /** @var Grid $grid */
         $grid = new $class();
         $grid->setPageNumber($page);
-        $html = PageBuilder::resolve()->buildPage(EmptyShell::resolve(), $grid);
+        $data = $grid->getAjaxData();
 
-        return new Response([], $html);
+        return new Response(['Content-type: application/json'], json_encode($data));
     }
 }
